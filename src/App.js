@@ -1,11 +1,8 @@
 import "./App.css";
 import "./index.css";
+import PaintingMarketplace from "./components/PaintingMarketplace";
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello there</h1>
-    </div>
-  );
+  return <PaintingMarketplace />;
 }
 
 export default App;
