@@ -7,6 +7,8 @@ import EventLists from "./events/pages/EventListsPage";
 import EventPost from "./events/pages/EventPostPage";
 import CreateEvent from "./events/pages/CreateEventPage";
 import GetEvents from "./events/pages/GetEventsPage";
+import DonationForm from "./donations/pages/DonationForm";
+import DonationList from "./donations/pages/DonationList";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
       <Route path="/event/:id" element={<EventPost />} exact/>
       <Route path="/createEvent" element={<CreateEvent />} exact/>
       <Route path="/getEvents" element={<GetEvents />} exact/>
+      <Route path="/createDonation" element={<DonationForm/>} exact/>
+      <Route path="/donations" element={<DonationList/>} exact/>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </Router>
