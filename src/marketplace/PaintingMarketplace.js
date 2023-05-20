@@ -1,4 +1,5 @@
 import React from "react";
+import "../index.css";
 import NFTCard from "./NFTCard";
 import img from "../painting.jpg";
 function PaintingMarketplace() {
@@ -7,25 +8,25 @@ function PaintingMarketplace() {
       title: "Madhubani Art",
       description: "A madhubani painting of an elephant",
       img: img,
-      price: "0.01 HBR",
+      price: "0.01 HBAR",
     },
     {
       title: "Madhubani Art",
       description: "A madhubani painting of an elephant",
       img: img,
-      price: "0.01 HBR",
+      price: "0.01 HBAR",
     },
     {
       title: "Madhubani Art",
       description: "A madhubani painting of an elephant",
       img: img,
-      price: "0.01 HBR",
+      price: "0.01 HBAR",
     },
     {
       title: "Madhubani Art",
       description: "A madhubani painting of an elephant",
       img: img,
-      price: "0.01 HBR",
+      price: "0.01 HBAR",
     },
   ];
   return (
