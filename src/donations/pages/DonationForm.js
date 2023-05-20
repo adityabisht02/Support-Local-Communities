@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Client as Appwrite, Databases } from 'appwrite';
 import { Server } from '../utils/config';
-import './DonationForm.css';
+import './Donation.css';
 
 const DonationForm = () => {
   const [title, setTitle] = useState("");
