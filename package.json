@@ -9,8 +9,12 @@
     "@testing-library/user-event": "^13.5.0",
     "appwrite": "^11.0.0",
     "axios": "^1.4.0",
+    "mapbox-gl": "^2.14.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-map-gl": "^7.0.23",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
