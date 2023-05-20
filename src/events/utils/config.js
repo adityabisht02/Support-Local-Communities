@@ -3,4 +3,5 @@ export const Server = {
     project: process.env.REACT_APP_PROJECT,
     collectionID : process.env.REACT_APP_COLLECTION_ID,
     databaseID : process.env.REACT_APP_DATABASE_ID,
+    geoAPIKey : process.env.IPGEO_API_KEY,
 }

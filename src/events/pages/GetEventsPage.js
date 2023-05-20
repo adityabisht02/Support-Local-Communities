@@ -13,7 +13,7 @@ const GetEvents = () => {
         const locale = new Locale(appwrite);
         appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
         const promise = await locale.get();
-        const location = await fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=1f2b9a1faf86493db202d2e400534b03&ip_address=${promise.ip}`);
+        const location = await fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=${Server.geoAPIKey}&ip_address=${promise.ip}`);
 
         const city = await location.json();
 
