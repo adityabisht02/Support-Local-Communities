@@ -1,55 +1,53 @@
 import React, { useState } from 'react';
-import appwrite from 'appwrite';
-import axios from 'axios';
-
-const endpoint = '';
-const projectId = '';
-
-// Initializing the Appwrite SDK
-const sdk = new appwrite.SDK({
-  endpoint,
-  project: projectId,
-});
+import { createDonationPost } from '../api/api';
 
 const DonationForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Create a new donation post in Appwrite
-      const response = await sdk.database.createDocument('collectionsId', {
+      const donationData = {
         title,
         description,
-      });
+      };
 
-      // Clear form inputs
+      await createDonationPost(donationData);
+
       setTitle('');
       setDescription('');
 
-      console.log('Donation post created:', response);
     } catch (error) {
-      console.log('Error creating donation post:', error);
+      console.error('Error creating donation post:', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <textarea
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button type="submit">Create Donation Post</button>
-    </form>
+    <div>
+      <h2>Create a Donation Post</h2>
+      <form onSubmit={handleFormSubmit}>
+        <label htmlFor="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <br />
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        ></textarea>
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 
