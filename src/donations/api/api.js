@@ -1,18 +1,17 @@
 import { Server } from '../utils/config';
-import { createClient } from 'appwrite';
+import { Client } from 'appwrite';
 
-const appwriteClient = createClient({
-  endpoint: Server.endpoint,
-  project: Server.project,
-});
+const appwriteClient = new Client();
+
+appwriteClient.setEndpoint(Server.endpoint);
+appwriteClient.setProject(Server.project);
 
 export const createDonationPost = async (donationData) => {
   try {
-    const response = await appwriteClient.database.createDocument(
+    const response = await appwriteClient.createDocument(
       Server.collectionID,
       donationData,
-      [],
-      Server.databaseID
+      ['*'], 
     );
 
     return response;
@@ -24,12 +23,7 @@ export const createDonationPost = async (donationData) => {
 
 export const getDonationPosts = async () => {
   try {
-    const response = await appwriteClient.database.listDocuments(
-      Server.collectionID,
-      [],
-      [],
-      Server.databaseID
-    );
+    const response = await appwriteClient.listDocuments(Server.collectionID);
 
     return response.documents;
   } catch (error) {

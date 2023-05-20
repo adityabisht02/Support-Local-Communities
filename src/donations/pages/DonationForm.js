@@ -3,7 +3,7 @@ import { createDonationPost } from '../api/api';
 
 const DonationForm = () => {
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [content, setContent] = useState('');
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -11,14 +11,13 @@ const DonationForm = () => {
     try {
       const donationData = {
         title,
-        description,
+        content,
       };
 
       await createDonationPost(donationData);
 
       setTitle('');
-      setDescription('');
-
+      setContent('');
     } catch (error) {
       console.error('Error creating donation post:', error);
     }
@@ -37,11 +36,11 @@ const DonationForm = () => {
           required
         />
         <br />
-        <label htmlFor="description">Description:</label>
+        <label htmlFor="content">Content:</label>
         <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          id="content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
           required
         ></textarea>
         <br />
