@@ -4,12 +4,16 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 
 
 import EventLists from "./events/pages/EventListsPage";
+import EventPost from "./events/pages/EventPostPage";
+import CreateEvent from "./events/pages/CreateEventPage";
 
 const App = () => {
   return (
     <Router>
     <Routes>
-      <Route path="/events" element={<EventLists />} />
+      <Route path="/events" element={<EventLists />} exact/>
+      <Route path="/event/:id" element={<EventPost />} exact/>
+      <Route path="/createEvent" element={<CreateEvent />} exact/>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </Router>
