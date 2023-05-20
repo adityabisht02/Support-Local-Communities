@@ -19,10 +19,11 @@ const CreateEvent = () => {
           content
         };
   
-        const response = await database.createDocument(Server.databaseID, Server.collectionID, "unique()", data);
+        const response = await database.createDocument("64689fe1bca86b952f51", "6468a0342d1d8955e8c3", "unique()", data);
         console.log("Document created:");
         if(response){
-          window.location.replace('/donations');
+          alert("Post Created Successfully!")
+          window.location.replace('/createDonation');
         }
 
       } catch(error){
