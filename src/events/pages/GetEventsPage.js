@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Client as Appwrite, Databases, Query } from "appwrite";
+import { Client as Appwrite, Databases, Locale, Query } from "appwrite";
 import { Server } from "../utils/config";
 
-const EventLists = () => {
+const GetEvents = () => {
   const [documents,setDocuments] = useState([]);
 
   useEffect(() => {
@@ -10,14 +10,22 @@ const EventLists = () => {
       try {
         const appwrite = new Appwrite();
         const database = new Databases(appwrite);
+        const locale = new Locale(appwrite);
         appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
+        const promise = await locale.get();
+        const location = await fetch(`https://ipgeolocation.abstractapi.com/v1/?api_key=${Server.geoAPIKey}&ip_address=${promise.ip}`);
 
-        const response = await database.listDocuments(databaseId, collectionId,[
-          Query.orderAsc('Name'),
-        ]);
+        const city = await location.json();
+
+        const response = await database.listDocuments(databaseId, collectionId, 
+          [
+            Query.equal('Address', [city.city, city.region]),
+            Query.orderAsc('Name'),
+          ]
+          );
         // console.log("List of documents:", response.documents);
-        setDocuments(response.documents);
-        // Process the retrieved documents as needed
+        setDocuments(response.documents)
+
 
       } catch (error) {
         console.error("Error retrieving documents:", error);
@@ -30,7 +38,7 @@ const EventLists = () => {
     listDocuments(databaseId, collectionId);
   }, []);
 
-  if(documents){
+  if(documents.length>0){
     return (
       <div>
           <h1>Events</h1>
@@ -47,13 +55,11 @@ const EventLists = () => {
     );
   } else{
     return (
-      <p>Loading...</p>
+      <p>No events in your areas</p>
     )
   }
   
 };
 
-export default EventLists;
+export default GetEvents;
 
-
-// Work to do - Search by city name or user current location

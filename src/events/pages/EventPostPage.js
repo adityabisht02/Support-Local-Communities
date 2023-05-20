@@ -22,10 +22,10 @@ const EventDetails = () => {
       }
     };
 
-    const databaseId = Server.databaseID; // Replace with your database ID
-    const collectionId = Server.collectionID; // Replace with your collection ID
+    const databaseId = Server.databaseID; 
+    const collectionId = Server.collectionID;
 
-    getDocumentById(databaseId, collectionId, id); // Use the ID from the URL
+    getDocumentById(databaseId, collectionId, id);
   }, [id]);
 
   return (

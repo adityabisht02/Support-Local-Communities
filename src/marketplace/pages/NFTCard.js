@@ -4,7 +4,7 @@ function NFTCard(props) {
   return (
     <div className="border-2 ml-12 mt-5 mb-12 flex flex-col items-center text-center rounded-lg w-48 md:w-72 shadow-2xl bg-black">
       <img
-        src={props.data.img}
+        src={props.data.fileId}
         alt=""
         className="w-100 h-80 rounded-lg object-cover"
         crossOrigin="anonymous"

@@ -1,10 +1,11 @@
 import { Server } from "../utils/config";
-import { Client } from "appwrite";
+import { Client, Storage, Databases } from "appwrite";
 
-const appwriteClient = new Client();
-console.log(Server);
-appwriteClient.setEndpoint(Server.endpoint);
-appwriteClient.setProject(Server.project);
+const client = new Client();
+
+client
+  .setEndpoint(Server.endpoint) // Your API Endpoint
+  .setProject(Server.project); // Your project ID
 
 export const createDonationPost = async (donationData) => {
   try {
