@@ -40,7 +40,7 @@ const CreateEvent = () => {
             <label>Description:</label>
             <input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
           </div>
-          <button type="submit">Post</button>
+          <button type="submit">Create</button>
         </form>
       );
 }
