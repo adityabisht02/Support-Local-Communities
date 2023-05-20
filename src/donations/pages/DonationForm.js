@@ -1,67 +1,48 @@
-import React, { useState } from 'react';
-import { Client } from 'appwrite';
+import React,{ useState } from 'react';
+import { Client as Appwrite, Databases } from 'appwrite';
 import { Server } from '../utils/config';
 
-const DonationForm = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+const CreateEvent = () => {
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
 
-    try {
-      const appwrite = new Client();
-      appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
-
-      // Create a new donation document
-      const response = await appwrite.createDocument(
-        Server.collectionID,
-        {
+    const handleSubmit = async (event)=>{
+      event.preventDefault();
+      try{
+        const appwrite = new Appwrite();
+        const database = new Databases(appwrite);
+        appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
+  
+        const data = {
           title,
-          content,
-        },
-        ['*'],
-        []
+          content
+        };
+  
+        const response = await database.createDocument(Server.databaseID, Server.collectionID, "unique()", data);
+        console.log("Document created:");
+        if(response){
+          window.location.replace('/donations');
+        }
+
+      } catch(error){
+        console.error("Error in creating Document:",error);
+      }
+    } 
+
+    return (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Title:</label>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+          </div>
+          <div>
+            <label>Description:</label>
+            <input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
+          </div>
+          <button type="submit">Post</button>
+        </form>
       );
+}
 
-      console.log('Donation created:', response);
-      
-      // Reset form fields
-      setTitle('');
-      setContent('');
-    } catch (error) {
-      console.error('Error creating donation:', error);
-    }
-  };
-
-  return (
-    <div>
-      <h2>Make a Donation</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="title">Title:</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="content">Content:</label>
-          <input
-            type="text"
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Donate</button>
-      </form>
-    </div>
-  );
-};
-
-export default DonationForm;
+export default CreateEvent;
