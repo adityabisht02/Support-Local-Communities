@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { createDonationPost } from '../api/api';
+import { Client } from 'appwrite';
+import { Server } from '../utils/config';
 
 const DonationForm = () => {
   const [title, setTitle] = useState('');
@@ -9,42 +10,55 @@ const DonationForm = () => {
     e.preventDefault();
 
     try {
-      const donationData = {
-        title,
-        content,
-      };
+      const appwrite = new Client();
+      appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
 
-      await createDonationPost(donationData);
+      // Create a new donation document
+      const response = await appwrite.createDocument(
+        Server.collectionID,
+        {
+          title,
+          content,
+        },
+        ['*'],
+        []
+      );
 
+      console.log('Donation created:', response);
+      
+      // Reset form fields
       setTitle('');
       setContent('');
     } catch (error) {
-      console.error('Error creating donation post:', error);
+      console.error('Error creating donation:', error);
     }
   };
 
   return (
     <div>
-      <h2>Create a Donation Post</h2>
+      <h2>Make a Donation</h2>
       <form onSubmit={handleFormSubmit}>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <br />
-        <label htmlFor="content">Content:</label>
-        <textarea
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        ></textarea>
-        <br />
-        <button type="submit">Submit</button>
+        <div>
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="content">Content:</label>
+          <input
+            type="text"
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Donate</button>
       </form>
     </div>
   );
