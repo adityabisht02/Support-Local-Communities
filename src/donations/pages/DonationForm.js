@@ -8,6 +8,8 @@ const DonationForm = () => {
   const [content, setContent] = useState("");
   const [amount, setAmount] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,6 +23,8 @@ const DonationForm = () => {
         content,
         amount,
         email,
+        phone,
+        date,
       };
 
       const response = await database.createDocument(
@@ -53,13 +57,22 @@ const DonationForm = () => {
         <input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
       </div>
       <div>
-        <label>Amount:</label>
+        <label>Target Amount:</label>
         <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
       </div>
       <div>
         <label>Email:</label>
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
+      <div>
+        <label>Phone:</label>
+        <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} />
+      </div>
+      <div>
+        <label>Date:</label>
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+      </div>
+      
       <button type="submit">Create Post</button>
     </form>
   );
