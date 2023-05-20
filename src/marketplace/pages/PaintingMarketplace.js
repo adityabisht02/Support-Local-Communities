@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "../../index.css";
 import NFTCard from "./NFTCard";
 import { Client, Databases, Storage } from "appwrite";
@@ -6,31 +6,33 @@ import { Server } from "../utils/config";
 import img from "../../painting.jpg";
 function PaintingMarketplace() {
   const [data, setData] = useState([]);
-  function getAllArt() {
-    const client = new Client();
-    const databases = new Databases(client);
+  useEffect(() => {
+    async function getAllArt() {
+      const client = new Client();
+      const databases = new Databases(client);
 
-    client
-      .setEndpoint(Server.endpoint) // Your API Endpoint
-      .setProject(Server.project); // Your project ID
+      client
+        .setEndpoint(Server.endpoint) // Your API Endpoint
+        .setProject(Server.project); // Your project ID
 
-    let promise = databases.listDocuments(
-      Server.databaseID,
-      Server.collectionID,
-      []
-    );
+      let promise = databases.listDocuments(
+        Server.databaseID,
+        Server.collectionID,
+        []
+      );
 
-    promise.then(
-      function (response) {
-        setData(response.documents);
-        console.log(response.documents); // Success
-      },
-      function (error) {
-        console.log(error); // Failure
-      }
-    );
-  }
-  getAllArt();
+      promise.then(
+        function (response) {
+          setData(response.documents);
+          console.log(response.documents); // Success
+        },
+        function (error) {
+          console.log(error); // Failure
+        }
+      );
+    }
+    getAllArt();
+  }, []);
   const sampledata = [
     {
       title: "Madhubani Art",
