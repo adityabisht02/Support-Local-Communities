@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 
 
 import EventLists from "./events/pages/EventListsPage";
-import DonationForm from "./donations/pages/DonationForm";
 
 const App = () => {
   return (
@@ -12,7 +11,6 @@ const App = () => {
     <Routes>
       <Route path="/events" element={<EventLists />} />
       <Route path="*" element={<Navigate to="/" replace />} />
-      <Route path="/donations" element={<DonationForm/>} />
     </Routes>
   </Router>
   );
