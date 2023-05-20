@@ -28,18 +28,13 @@ const CreateEvent = () => {
         };
   
         const response = await database.createDocument(Server.databaseID, Server.collectionID, "unique()", data);
-        console.log("Document created:", response);
-  
-        // Clear form inputs
-        setName("");
-        setDescription("");
-        setAddress("");
-        setOrganizers("");
-        setTime("");
-        setImage("");
+        console.log("Document created:");
+        if(response){
+          window.location.replace('/events');
+        }
 
       } catch(error){
-        console.error("Error in creating Document: "+error);
+        console.error("Error in creating Document:",error);
       }
     } 
 
