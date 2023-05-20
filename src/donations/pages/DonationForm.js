@@ -3,7 +3,7 @@ import { Client as Appwrite, Databases } from 'appwrite';
 import { Server } from '../utils/config';
 
 
-const CreateEvent = () => {
+const DonationForm = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
@@ -46,4 +46,4 @@ const CreateEvent = () => {
       );
 }
 
-export default CreateEvent;
+export default DonationForm;
