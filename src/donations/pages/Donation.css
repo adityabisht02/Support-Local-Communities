@@ -6,11 +6,22 @@
   background: linear-gradient(90deg, #6C4AB6 0%, #8D9EFF 35%, #8D9EFF 100%);
 }
 
+.body hr{
+    height: 2px;
+    background-color: #000;
+    border: none;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
 .donation-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
   }
   
   .donation-form {
@@ -20,6 +31,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
   }
   
   .donation-form h2 {
@@ -37,29 +49,35 @@
   }
   
   .donation-form input[type="text"],
-  .donation-form input[type="number"],
   .donation-form input[type="email"],
-  .donation-form input[type="tel"],
-  .donation-form input[type="date"],
   .donation-form textarea {
-    width: 100%;
+    width: 80%;
     padding: 8px;
     margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+  .donation-form input[type="date"],
+  .donation-form input[type="number"],
+  .donation-form input[type="tel"]{
+    width: 50%;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
   .donation-form .submit-button {
     display: block;
-    width: 100%;
+    width: 40%;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #8D9EFF;
     color: #fff;
     cursor: pointer;
+    margin: 20px auto;
   }
-  
+
   .donation-form .submit-button:hover {
     background-color: #6C4AB6;
   }
