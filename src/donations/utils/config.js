@@ -4,4 +4,3 @@ export const Server = {
     collectionID : process.env.REACT_APP_COLLECTION_ID,
     databaseID : process.env.REACT_APP_DATABASE_ID,
 }
-

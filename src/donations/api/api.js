@@ -12,6 +12,7 @@ export const createDonationPost = async (donationData) => {
       Server.collectionID,
       donationData,
       ['*'], 
+      []
     );
 
     return response;
