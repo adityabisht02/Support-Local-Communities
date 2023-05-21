@@ -6,7 +6,7 @@
   <h2>Tools and Technologies Used</h2>
   <p align="center">
   <a href="https://skillicons.dev">
-   <img src="https://skillicons.dev/icons?i=github,git,appwrite,react,vscode"/>
+   <img src="https://skillicons.dev/icons?i=github,git,appwrite,react,html,css,js,vscode"/>
   </a>
 </p>
   <h2>Screenshots</h2>
