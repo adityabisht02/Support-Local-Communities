@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: wrap;
+  align-items: center;
 }
-
 .bard {
+  align-items: center;
   order: 1;
   margin: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
