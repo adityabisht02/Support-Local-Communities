@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Client as Appwrite, Databases } from "appwrite";
 import { Server } from "../utils/config";
+import Navigation from "../components/navigation/Navigation";
+import './EventPostPage.css'
 
 const EventDetails = () => {
   const { id } = useParams(); 
@@ -29,20 +31,24 @@ const EventDetails = () => {
   }, [id]);
 
   return (
+    <React.Fragment>
+    <Navigation/>
     <div>
       {document ? (
-        <div>
-          <h3>{document.Name}</h3>
+        <div className='card'>
+          <img src={document.Images} alt='events-image'/>
+          <h1><strong>{document.Name}</strong></h1>
+          <p className="price">{document.Region}, {document.City}, {document.Address}</p>
+          <p className="price"><strong>Organized by: {document.Organizers}</strong></p>
+          <p className="price">From - {document.StartTime}</p>
+          <p className="price">To - {document.EndTime}</p>
           <p>{document.Description}</p>
-          <p>{document.Address}</p>
-          <p>{document.Organizers}</p>
-          <p>{document.Timeline}</p>
-          <p>{document.Images}</p>
         </div>
       ) : (
         <p>Loading...</p>
       )}
     </div>
+    </React.Fragment>
   );
 };
 

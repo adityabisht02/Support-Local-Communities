@@ -9,6 +9,7 @@ import CreateEvent from "./events/pages/CreateEventPage";
 import GetEvents from "./events/pages/GetEventsPage";
 import DonationForm from "./donations/pages/DonationForm";
 import DonationList from "./donations/pages/DonationList";
+import './index.css';
 
 const App = () => {
   return (
@@ -28,11 +29,3 @@ const App = () => {
 
 export default App;
 
-// import "./App.css";
-// import "./index.css";
-// import PaintingMarketplace from "./components/PaintingMarketplace";
-// function App() {
-//   return <PaintingMarketplace />;
-// }
-
-// export default App;

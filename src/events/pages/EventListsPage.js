@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Client as Appwrite, Databases, Query } from "appwrite";
 import { Server } from "../utils/config";
+import Navigation from "../components/navigation/Navigation";
+import "./EventListsPage.css";
 
 const EventLists = () => {
-  const [documents,setDocuments] = useState([]);
+  const [documents, setDocuments] = useState([]);
 
   useEffect(() => {
     const listDocuments = async (databaseId, collectionId) => {
@@ -12,13 +14,14 @@ const EventLists = () => {
         const database = new Databases(appwrite);
         appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
 
-        const response = await database.listDocuments(databaseId, collectionId,[
-          Query.orderAsc('Name'),
-        ]);
-        // console.log("List of documents:", response.documents);
+        const response = await database.listDocuments(
+          databaseId,
+          collectionId,
+          [Query.orderAsc("Name")]
+        );
+        console.log("List of documents:", response.documents);
         setDocuments(response.documents);
         // Process the retrieved documents as needed
-
       } catch (error) {
         console.error("Error retrieving documents:", error);
       }
@@ -30,30 +33,37 @@ const EventLists = () => {
     listDocuments(databaseId, collectionId);
   }, []);
 
-  if(documents){
+  if (documents) {
     return (
-      <div>
-          <h1>Events</h1>
-          <ul>
-          {documents.map((document) => (
-            <div>
-            <li key={document.$id}><a href={`/event/${document.$id}`}><strong>{document.Name}</strong></a></li>
-            <p>{document.Description}</p>
-            <p>{document.Images}</p>
-            </div>
-          ))}
-          </ul>
-      </div>
+      <React.Fragment>
+        <Navigation />
+        <section className="cards">
+        {documents.map((document) => (
+          <div className="card">
+            <img src={document.Images} alt="Event-image" />
+            <h1>{document.Name}</h1>
+            <p className="price">{document.Region}, {document.City}</p>
+            <p>{document.Organizers}</p>
+            <p>
+            <a href={`/event/${document.$id}`}>
+              <button>Read More</button>
+            </a>
+            </p>
+          </div>
+        ))}
+        </section>
+      </React.Fragment>
     );
-  } else{
+  } else {
     return (
-      <p>Loading...</p>
-    )
+      <React.Fragment>
+        <Navigation />
+        <div>
+          <p>Loading...</p>
+        </div>
+      </React.Fragment>
+    );
   }
-  
 };
 
 export default EventLists;
-
-
-// Work to do - Search by city name or user current location
