@@ -38,19 +38,21 @@ const EventLists = () => {
       <React.Fragment>
         <Navigation />
         <section className="cards">
-        {documents.map((document) => (
-          <div className="card">
-            <img src={document.Images} alt="Event-image" />
-            <h1>{document.Name}</h1>
-            <p className="price">{document.Region}, {document.City}</p>
-            <p>{document.Organizers}</p>
-            <p>
-            <a href={`/event/${document.$id}`}>
-              <button>Read More</button>
-            </a>
-            </p>
-          </div>
-        ))}
+          {documents.map((document) => (
+            <div className="card">
+              <img src={document.Images} alt="Event-image" />
+              <h1>{document.Name}</h1>
+              <p className="price">
+                {document.Region}, {document.City}
+              </p>
+              <p>{document.Organizers}</p>
+              <p>
+                <a href={`/event/${document.$id}`}>
+                  <button>Read More</button>
+                </a>
+              </p>
+            </div>
+          ))}
         </section>
       </React.Fragment>
     );

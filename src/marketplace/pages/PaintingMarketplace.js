@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../index.css";
 import NFTCard from "./NFTCard";
 import { Client, Databases, Storage } from "appwrite";
@@ -62,12 +62,12 @@ function PaintingMarketplace() {
   ];
   return (
     <React.Fragment>
-    <Navigation/>
-    <div className="grid grid-cols-3">
-      {data.map((value, index) => {
-        return <NFTCard data={value} key={index} />;
-      })}
-    </div>
+      <Navigation />
+      <div className="grid grid-cols-3">
+        {data.map((value, index) => {
+          return <NFTCard data={value} key={index} />;
+        })}
+      </div>
     </React.Fragment>
   );
 }

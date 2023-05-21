@@ -13,7 +13,11 @@ function NFTCard(props) {
         <strong className="text-xl">{props.data.title}</strong>
         <p className="display-inline">{props.data.description}</p>
         <p className="display-inline">{props.data.price}</p>
-        <button className="font-bold p-3 bg-slate-700 w-full">Purchase</button>
+        <a href="https://buy.stripe.com/test_8wM9DybJz9KYfra5kl">
+          <button className="font-bold p-3 bg-slate-700 w-full">
+            Purchase
+          </button>
+        </a>
       </div>
     </div>
   );
