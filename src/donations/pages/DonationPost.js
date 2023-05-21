@@ -4,6 +4,7 @@ import { Client as Appwrite, Databases } from 'appwrite';
 import { Server } from '../utils/config';
 
 import './Donation.css';
+import Navigation from './Navigation';
 
 const DonationPost = () => {
   const { postId } = useParams();
@@ -35,6 +36,8 @@ const DonationPost = () => {
 
  
   return (
+    <React.Fragment>
+    <Navigation/>
     <div className='donationPost'>
       <div className="donation-list">
         <div className="title">
@@ -62,6 +65,7 @@ const DonationPost = () => {
         </div>
       </div>
     </div>
+    </React.Fragment>
   );
 };
 

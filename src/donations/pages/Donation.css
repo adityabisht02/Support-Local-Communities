@@ -92,7 +92,7 @@
 
 /* Path: src\donations\pages\DonationList.js */
 *{
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
 }
 .donationPost{
   padding-top: 50px;

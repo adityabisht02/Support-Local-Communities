@@ -5,6 +5,7 @@ import { AiOutlineMail, AiOutlinePhone, AiOutlineCalendar, AiOutlineEnvironment 
 import { FaMoneyBillWave } from 'react-icons/fa';
 import { IoIosCreate } from 'react-icons/io';
 import './Donation.css';
+import Navigation from './Navigation';
 
 const DonationList = () => {
   const [donations, setDonations] = useState([]);
@@ -35,6 +36,8 @@ const DonationList = () => {
   };
 
   return (
+    <React.Fragment>
+    <Navigation/>
     <div className='donationPost'>
       <br />
       <div className="donation-list">
@@ -98,6 +101,7 @@ const DonationList = () => {
         </div>
       </div>
     </div>
+    </React.Fragment>
   );
 };
 

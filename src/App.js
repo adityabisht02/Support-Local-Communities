@@ -15,13 +15,14 @@ import CreateEvent from "./events/pages/CreateEventPage";
 import GetEvents from "./events/pages/GetEventsPage";
 import DonationForm from "./donations/pages/DonationForm";
 import DonationList from "./donations/pages/DonationList";
-import './index.css';
 import DonationPost from "./donations/pages/DonationPost";
+import Home from "./Home";
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Home/>} exact/>
         <Route path="/events" element={<EventLists />} exact />
         <Route path="/marketplace" element={<PaintingMarketplace />} exact />
         <Route path="/artworkform" element={<ArtworkForm />} exact />
