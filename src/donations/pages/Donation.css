@@ -17,6 +17,7 @@
     height: 2px;
     background-color: #000;
     border: none;
+    margin-top: 150px;
     margin-bottom: 10px;
     width: 300px;
 }
@@ -91,9 +92,7 @@
   
 
 /* Path: src\donations\pages\DonationList.js */
-*{
-  font-family: 'Roboto', sans-serif;
-}
+
 .donationPost{
   padding-top: 50px;
   font-family: 'Roboto', sans-serif;
@@ -200,4 +199,11 @@
 .donation-list button:hover{
   background-color: white;
   color: black
+}
+
+.filter-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
