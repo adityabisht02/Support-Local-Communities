@@ -20,5 +20,6 @@
 <img width="960" alt="image" src="https://github.com/adityabisht02/Support-Local-Communities/assets/80088403/42681e76-0e3f-4642-8a3d-5cbd9a545d42">
 <img width="750" alt="image" src="https://github.com/adityabisht02/Support-Local-Communities/assets/80088403/cef6d0e6-cfb1-4a8b-9368-05373e167bfe">
 <img width="960" alt="image" src="https://github.com/adityabisht02/Support-Local-Communities/assets/80088403/c37774bd-60be-4b04-9677-ed8c52f53b75">
-
+<hr/>
+  <h3>Thanks for visiting!</h3>
  </div>
