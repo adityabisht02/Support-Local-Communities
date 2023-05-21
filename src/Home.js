@@ -54,7 +54,9 @@ const Home = () => {
           </p>
         </div>
       </section>
+      <div className="footer-home">
       <Footer />
+      </div>
     </React.Fragment>
   );
 };
