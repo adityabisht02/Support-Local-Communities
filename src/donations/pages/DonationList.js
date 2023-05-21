@@ -87,7 +87,7 @@ const DonationList = () => {
                 <a href={"/"} className="payment-link">
                   <button className="donate-button" type="submit">Donate Now</button>
                 </a>
-                <a href={`/donations/${donation.$id}`} className='postid'>
+                <a href={`/donations/:${donation.$id}`} className='postid'>
                   <button className="donate-button" type="submit">Go to Post</button>
                 </a>
               </div>
