@@ -14,6 +14,7 @@ const DonationForm = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
+  const [location, setLocation] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -29,6 +30,7 @@ const DonationForm = () => {
         email,
         phone,
         date,
+        location,
       };
 
       const response = await database.createDocument(
@@ -83,6 +85,10 @@ const DonationForm = () => {
         <div className="form-group">
           <label htmlFor="date"><AiOutlineCalendar /> Date:</label>
           <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="location"><AiOutlineEnvironment />  Location[City]:</label>
+          <input type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)} />
         </div>     
         <button type="submit" className="submit-button">Create Post</button>
         <div>
