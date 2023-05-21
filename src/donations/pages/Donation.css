@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 .body{
-  padding-top: 300px;
+  padding-top: 50px;
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(90deg, #6C4AB6 0%, #8D9EFF 35%, #8D9EFF 100%);
 }
@@ -84,7 +84,9 @@
   
 
 /* Path: src\donations\pages\DonationList.js */
-
+*{
+  font-family: 'Roboto', sans-serif;
+}
 .donationPost{
   padding-top: 50px;
   font-family: 'Roboto', sans-serif;
@@ -143,4 +145,3 @@
   background-color: #000;
   color: white;
 }
-

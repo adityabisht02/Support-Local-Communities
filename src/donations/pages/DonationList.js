@@ -33,23 +33,17 @@ const DonationList = () => {
   return (
     <div className='donationPost'>
     <div className="donation-list">
-    <div align='center'>
-            <h1>Donations list<hr/></h1>
-            <div>
-            <a href={"/createDonation"} className="payment-link">
-              <button className="donate-button" type="submit">Create a Donation Post</button>
-            </a>
-            </div>
+      <div align='center'>
+        <h1>Donation List<hr/></h1>
     </div>
-
       <div className="donation-cards-container">
         {donations.map((donation) => (
           <div key={donation.$id} className="donation-card">
-            <h2>{donation.title}</h2>
+            <h3>{donation.title}</h3>
             <p>{donation.content}</p>
             <hr/>
             <div align='center'>
-            <h3>Target Amount: ${donation.amount}</h3>
+            <p><h3>Target Amount: ${donation.amount}</h3></p>
             <p>Donation so far: $0</p>
             <p>Email: {donation.email}</p>
             <p>Phone: {donation.phone}</p>
