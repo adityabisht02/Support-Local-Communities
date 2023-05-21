@@ -48,14 +48,18 @@ const DonationList = () => {
               <a href='/createDonation'>Create a donation post</a>
             </button>
           </div>
-          <div className="filter-container">
+
+        </div>
+        <div className="filter-container">
+          <div>
             <label>Status:</label>
             <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
               <option value="all">All</option>
               <option value="open">Open</option>
               <option value="closed">Closed</option>
             </select>
-
+          </div>
+          <div>
             <label>Location:</label>
             <select value={locationFilter} onChange={(e) => setLocationFilter(e.target.value)}>
               <option value="all">All</option>
@@ -67,7 +71,6 @@ const DonationList = () => {
             </select>
           </div>
         </div>
-
 
 
         <div className="donation-cards-container">
@@ -90,7 +93,7 @@ const DonationList = () => {
                 <a href={"/"} className="payment-link">
                   <button className="donate-button" type="submit">Donate Now</button>
                 </a>
-                <a href={`/donations/:${donation.$id}`} className='postid'>
+                <a href={`/donations/${donation.$id}`} className='postid'>
                   <button className="donate-button" type="submit">Go to Post</button>
                 </a>
               </div>

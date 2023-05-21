@@ -55,7 +55,7 @@ const DonationForm = () => {
     <Navigation/>
     <div className='body'>
     <div align='center'>
-            <p><FaMoneyBillWave className="money-icon" />  Create a Donation<hr/></p>
+            <p><FaMoneyBillWave className="money-icon" />  Create a Donation Post<hr/></p>
     </div>
     <div className="donation-form-container">
       <br/>
@@ -86,7 +86,9 @@ const DonationForm = () => {
         </div>     
         <button type="submit" className="submit-button">Create Post</button>
         <div>
-            <button className="donate-button" type="submit"><a href='/donations'>Donations List</a></button>
+        <button type='submit' className="donate-button">
+          <a href='/donations'>Donations List</a>
+        </button>
         </div>
       </form>
       
