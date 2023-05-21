@@ -19,7 +19,7 @@ const DonationPost = () => {
       const appwrite = new Appwrite();
       const database = new Databases(appwrite);
       appwrite.setEndpoint("https://cloud.appwrite.io/v1").setProject("646848cf83cf66ebfe7c");
-      console.log('postId:', postId); 
+      console.log('postId:', postId);
       const response = await database.getDocument('64689fe1bca86b952f51', '6468a0342d1d8955e8c3', postId);
 
       if (response.$id) {
@@ -54,43 +54,63 @@ const DonationPost = () => {
         </div>
 
         <div className="donation-card">
-        <div className="donation-card-image">
+          <div className="donation-card-image">
             <img src={`https://www.gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg`} alt='donation-images' />
+          </div>
         </div>
 
-        </div>
-          <h1 align='center'>{donation.title}</h1>
-          <h>{donation.content}</h>
-          <br /><br />
-          <hr />
-          <div align='left'>
-            <h3>Target Amount: ${donation.amount}</h3>
-            <p>Donation so far: ${Math.floor(Math.random() * donation.amount)}</p>
-            <p>Email: <u><a href={`mailto:${donation.email}`}>{donation.email}</a></u></p>
-            <p>Phone: {donation.phone}</p>
-            <p>Location: {donation.location}</p>
-          </div>
-          <div align='center'>
-            <a href={"/"} className="payment-link">
-              <button className="donate-button" type="submit">Donate Now</button>
-            </a>
-            <a href={`/donations/${donation.$id}`} className='pid'>
-              <button className="donate-button" type="submit">Go to Post</button>
-            </a>
+        <h1 align='center'>{donation.title}</h1>
+        <p>{donation.content}</p>
+        <br /><br />
+        <hr />
 
+        <div align='left'>
+          <h3>Target Amount: ${donation.amount}</h3>
+          <p>Donation so far: ${Math.floor(Math.random() * donation.amount)}</p>
+          <p>Email: <u><a href={`mailto:${donation.email}`}>{donation.email}</a></u></p>
+          <p>Phone: {donation.phone}</p>
+          <p>Location: {donation.location}</p>
+        </div>
+
+        <div align='center'>
+          <a href={"/"} className="payment-link">
+            <button className="donate-button" type="submit">Donate Now</button>
+          </a>
+        </div>
+
+        <br />
+        <small>Posted at: {donation.date}</small>
+
+        <div className="share-buttons">
+          <p>Share this post:</p>
+          <div className="social-icons">
+            <FaFacebook onClick={shareOnFacebook} size={50} />
+            <FaTwitter onClick={shareOnTwitter} size={50} />
+            <FaLinkedin onClick={shareOnLinkedIn} size={50} />
           </div>
-          <br />
-          <small>Posted at: {donation.date}</small>
-          <div className="share-buttons">
-            <p>Share this post:</p>
-            <div className="social-icons">
-              <FaFacebook onClick={shareOnFacebook} />
-              <FaTwitter onClick={shareOnTwitter} />
-              <FaLinkedin onClick={shareOnLinkedIn} />
+        </div>
+
+        <div className="comments">
+          <div className="comment-box">
+            <h3>Comments</h3>
+            <div className="comment">
+              <p>Comment 1</p>
+              <p>Comment 2</p>
+              <p>Comment 3</p>
+            </div>
+
+            <div className="comment-form">
+              <h3>Leave a comment</h3>
+              <form>
+                <input type="text" placeholder="Name" />
+                <textarea placeholder="Comment" />
+                <button type="submit">Submit</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
