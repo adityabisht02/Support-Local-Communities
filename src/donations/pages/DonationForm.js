@@ -83,9 +83,9 @@ const DonationForm = () => {
         </div>     
         <button type="submit" className="submit-button">Create Post</button>
         <div>
-        <a href={"/donations"} className="payment-link">
-              <button className="donate-button" type="submit">Donations List</button>
-            </a>
+        <button type='submit' className="donate-button">
+          <a href='/donations'>Donations List</a>
+        </button>
         </div>
       </form>
       
