@@ -15,7 +15,7 @@ const DonationList = () => {
     try {
       const appwrite = new Appwrite();
       const database = new Databases(appwrite);
-      appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
+      appwrite.setEndpoint("https://cloud.appwrite.io/v1").setProject("646848cf83cf66ebfe7c");
 
       const response = await database.listDocuments(
         '64689fe1bca86b952f51',

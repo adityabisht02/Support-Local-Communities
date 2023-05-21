@@ -4,6 +4,13 @@
   padding-top: 50px;
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(90deg, #6C4AB6 0%, #8D9EFF 35%, #8D9EFF 100%);
+  padding-bottom: 300px;
+}
+
+.body p{
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 50px;
 }
 
 .body hr{
@@ -19,7 +26,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-top: 100px;
+    margin-top: 250px;
     padding-bottom: 100px;
     text-align: center;
   }

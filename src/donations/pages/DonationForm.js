@@ -52,7 +52,7 @@ const DonationForm = () => {
   return (
     <div className='body'>
     <div align='center'>
-            <h1><FaMoneyBillWave className="money-icon" />  Create a Donation<hr/></h1>
+            <p><FaMoneyBillWave className="money-icon" />  Create a Donation<hr/></p>
     </div>
     <div className="donation-form-container">
       <br/>
@@ -82,7 +82,13 @@ const DonationForm = () => {
           <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
         </div>     
         <button type="submit" className="submit-button">Create Post</button>
+        <div>
+        <a href={"/donations"} className="payment-link">
+              <button className="donate-button" type="submit">Donations List</button>
+            </a>
+        </div>
       </form>
+      
     </div>
     </div>
   );
