@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Client as Appwrite, Databases } from 'appwrite';
-import { Server } from '../utils/config';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 import './Donation.css';
@@ -36,15 +35,18 @@ const DonationPost = () => {
   }
 
   const shareOnFacebook = () => {
-    console.log('Sharing on Facebook');
+    const url = window.location.href;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
   };
 
   const shareOnTwitter = () => {
-    console.log('Sharing on Twitter');
+    const url = window.location.href;
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, '_blank');
   };
 
   const shareOnLinkedIn = () => {
-    console.log('Sharing on LinkedIn');
+    const url = window.location.href;
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
   };
 
   return (
@@ -62,28 +64,41 @@ const DonationPost = () => {
           </div>
         </div>
 
-        <h1 align='center'>{donation.title}</h1>
-        <p>{donation.content}</p>
-        <br /><br />
-        <hr />
+        <div className="donation-content">
+          <h1>{donation.title}</h1>
+          <p>{donation.content}</p>
 
-        <div align='left'>
-          <h3>Target Amount: ${donation.amount}</h3>
-          <p>Donation so far: ${Math.floor(Math.random() * donation.amount)}</p>
-          <p>Email: <u><a href={`mailto:${donation.email}`}>{donation.email}</a></u></p>
-          <p>Phone: {donation.phone}</p>
-          <p>Location: {donation.location}</p>
+          <div className="donation-details">
+            <div className="donation-detail">
+              <h3>Target Amount:</h3>
+              <p>${donation.amount}</p>
+            </div>
+            <div className="donation-detail">
+              <h3>Donation so far:</h3>
+              <p>${Math.floor(Math.random() * donation.amount)}</p>
+            </div>
+            <div className="donation-detail">
+              <h3>Email:</h3>
+              <p><u><a href={`mailto:${donation.email}`}>{donation.email}</a></u></p>
+            </div>
+            <div className="donation-detail">
+              <h3>Phone:</h3>
+              <p>{donation.phone}</p>
+            </div>
+            <div className="donation-detail">
+              <h3>Location:</h3>
+              <p>{donation.location}</p>
+            </div>
+          </div>
+
+          <div className="donation-actions">
+            <a href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ" className="payment-link">
+              <button className="donate-button" type="submit">Donate Now</button>
+            </a>
+            <small>Posted at: {donation.date}</small>
+          </div>
         </div>
-
-        <div align='center'>
-          <a href={"/"} className="payment-link">
-            <button className="donate-button" type="submit">Donate Now</button>
-          </a>
-        </div>
-
-        <br />
-        <small>Posted at: {donation.date}</small>
-
+      <hr/>
         <div className="share-buttons">
           <p>Share this post:</p>
           <div className="social-icons">
@@ -92,7 +107,7 @@ const DonationPost = () => {
             <FaLinkedin onClick={shareOnLinkedIn} size={50} />
           </div>
         </div>
-
+      <hr/>
         <div className="comments">
           <div className="comment-box">
             <h3>Comments</h3>
