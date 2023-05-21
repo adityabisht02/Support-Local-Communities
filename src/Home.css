@@ -1,10 +1,10 @@
-.cards {
+.bards {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-.card {
+.bard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 50%;
     margin: 10px;
@@ -20,7 +20,7 @@
     font-size: 22px;
   }
   
-  .card button {
+  .bard button {
     border: none;
     outline: 0;
     padding: 12px;
@@ -32,6 +32,6 @@
     font-size: 18px;
   }
   
-  .card button:hover {
+  .bard button:hover {
     opacity: 0.7;
   }
