@@ -1,6 +1,7 @@
 import React from "react";
 import Navigation from "./Navigation";
 import "./Home.css";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -40,6 +41,7 @@ const Home = () => {
           </p>
         </div>
       </section>
+      <Footer/>
     </React.Fragment>
   );
 };
