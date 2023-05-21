@@ -52,7 +52,7 @@ const DonationForm = () => {
   return (
     <div className='body'>
     <div align='center'>
-            <p><FaMoneyBillWave className="money-icon" />  Create a Donation<hr/></p>
+            <p><FaMoneyBillWave className="money-icon" />  Create a Donation Post<hr/></p>
     </div>
     <div className="donation-form-container">
       <br/>
