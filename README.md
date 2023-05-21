@@ -11,6 +11,7 @@
 </p>
   <h2>Screenshots</h2>
   <img width="519" alt="image" src="https://github.com/adityabisht02/Support-Local-Communities/assets/80088403/25999d6c-d296-41c8-8fbb-c1ac373fb0e2">
+  <img width="960" alt="image" src="https://github.com/adityabisht02/Support-Local-Communities/assets/80088403/7cb1748a-92a0-4012-b8a3-9d538102cf9d">
 <img width="955" alt="image" src="https://github.com/adityabisht02/Support-Local-Communities/assets/80088403/d938bf83-6636-4710-a9b3-e6d2339e35bd">
 <img width="940" alt="image" src="https://github.com/adityabisht02/Support-Local-Communities/assets/80088403/e9340527-7f4d-407f-9c2e-a08c54c58a70">
 <img width="960" alt="image" src="https://github.com/adityabisht02/Support-Local-Communities/assets/80088403/a70bc61f-bdfd-446b-b570-8d334e62d269">
