@@ -15,6 +15,7 @@ import CreateEvent from "./events/pages/CreateEventPage";
 import GetEvents from "./events/pages/GetEventsPage";
 import DonationForm from "./donations/pages/DonationForm";
 import DonationList from "./donations/pages/DonationList";
+import DonationPost from "./donations/pages/DonationPost";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/getEvents" element={<GetEvents />} exact />
         <Route path="/createDonation" element={<DonationForm />} exact />
         <Route path="/donations" element={<DonationList />} exact />
+        <Route path="/donations/:postId" component={DonationPost} exact/>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

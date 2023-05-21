@@ -97,8 +97,8 @@
 .donationPost{
   padding-top: 50px;
   font-family: 'Roboto', sans-serif;
-  /* background: linear-gradient(90deg, #d5dade 0%, #e7e8ec 35%, #c5ccf4 100%); */
-  background-color: white;
+  background: linear-gradient(90deg, #d5dade 0%, #e7e8ec 35%, #dde2fa 100%);
+  /* background-color: white; */
 }
 .donation-list {
   display: flex;
@@ -106,6 +106,7 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 70px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .donation-cards-container {
@@ -114,6 +115,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+
 }
 
 .donation-card {
@@ -124,7 +126,9 @@
   margin-bottom: 20px;
   color: #000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  transition: box-shadow 0.3s;
 }
+
 .donation-cards-container :hover{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.0);
 }
@@ -140,8 +144,8 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #8D9EFF;
-  color: #fff;
+  background-color: #dfe1ec;
+  color: #000;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -151,4 +155,49 @@
 .payment-link :hover{
   background-color: #000;
   color: white;
+}
+
+.title{
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: #b3b6b9;
+}
+.title p{
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.donation-cards-container h1{
+  font-size: 30px;
+}
+
+.donation-cards-container h3{
+  font-size: 20px;
+}
+.donation-cards-container h3{
+  color: white;
+}
+
+.donation-card a{
+  color: red;
+}
+
+.donation-list button{
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.donation-list button:hover{
+  background-color: white;
+  color: black
 }
