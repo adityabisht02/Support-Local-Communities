@@ -93,6 +93,9 @@
 
 /* Path: src\donations\pages\DonationList.js */
 
+*{
+  font-family: sans-serif;
+}
 .donationPost{
   padding-top: 50px;
   font-family: 'Roboto', sans-serif;

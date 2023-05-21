@@ -1,9 +1,10 @@
-import { React, useState, useEffect } from "react";
+import React , { useState, useEffect } from "react";
 import "../../index.css";
 import NFTCard from "./NFTCard";
 import { Client, Databases, Storage } from "appwrite";
 import { Server } from "../utils/config";
 import img from "../../painting.jpg";
+import Navigation from "./Navigation";
 function PaintingMarketplace() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -60,11 +61,14 @@ function PaintingMarketplace() {
     },
   ];
   return (
+    <React.Fragment>
+    <Navigation/>
     <div className="grid grid-cols-3">
       {data.map((value, index) => {
         return <NFTCard data={value} key={index} />;
       })}
     </div>
+    </React.Fragment>
   );
 }
 

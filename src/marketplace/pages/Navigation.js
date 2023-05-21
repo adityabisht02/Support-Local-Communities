@@ -5,9 +5,8 @@ import "./Navigation.css"
 const Navigation = () => {
   return (
     <ul>
-    <li><a href="/events">Events</a></li>
-    <li><a href="/getEvents">Events near me</a></li>
-    <li><a href="/createEvent">Create Event</a></li>
+    <li><a href="/marketplace">Art Market</a></li>
+    <li><a href="/artworkform">Submit Art</a></li>
     <li className="activeList"><a className="active" href="/">Support Local</a></li>
   </ul>
   );

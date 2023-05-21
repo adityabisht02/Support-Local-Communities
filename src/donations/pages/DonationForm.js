@@ -5,6 +5,7 @@ import './Donation.css';
 import { AiOutlineMail, AiOutlinePhone, AiOutlineCalendar, AiOutlineEnvironment } from 'react-icons/ai';
 import { FaMoneyBillWave } from 'react-icons/fa';
 import { IoIosCreate } from 'react-icons/io';
+import Navigation from './Navigation';
 
 const DonationForm = () => {
   const [title, setTitle] = useState("");
@@ -50,6 +51,8 @@ const DonationForm = () => {
   }
 
   return (
+    <React.Fragment>
+    <Navigation/>
     <div className='body'>
     <div align='center'>
             <p><FaMoneyBillWave className="money-icon" />  Create a Donation Post<hr/></p>
@@ -91,6 +94,7 @@ const DonationForm = () => {
       
     </div>
     </div>
+    </React.Fragment>
   );
 }
 
