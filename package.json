@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/vaishnavi-3969/Support-Local-Communities",
+  "homepage": "http://vaishnavi-3969.github.io/",
   "name": "support-local",
   "version": "0.1.0",
   "private": true,
@@ -29,6 +29,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    
     "extends": [
       "react-app",
       "react-app/jest"
