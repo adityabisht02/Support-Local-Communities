@@ -30,7 +30,8 @@ const App = () => {
         <Route path="/getEvents" element={<GetEvents />} exact />
         <Route path="/createDonation" element={<DonationForm />} exact />
         <Route path="/donations" element={<DonationList />} exact />
-        <Route path="/donations/:postId" component={DonationPost} exact/>
+        <Route path="/donations/:postId" element={<DonationPost/>} exact />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

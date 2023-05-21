@@ -45,10 +45,10 @@ const DonationList = () => {
               <a href='/createDonation'>Create a donation post</a>
             </button>
           </div>
-          
+
         </div>
         <div className="filter-container">
-        <div>
+          <div>
             <label>Status:</label>
             <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
               <option value="all">All</option>
@@ -66,8 +66,8 @@ const DonationList = () => {
               <option value="Chennai">Chennai</option>
               <option value="Delhi">Delhi</option>
             </select>
-            </div>
           </div>
+        </div>
 
 
         <div className="donation-cards-container">
