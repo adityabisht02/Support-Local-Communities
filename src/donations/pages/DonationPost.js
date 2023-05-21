@@ -92,7 +92,7 @@ const DonationPost = () => {
           </div>
 
           <div className="donation-actions">
-            <a href="/" className="payment-link">
+            <a href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ" className="payment-link">
               <button className="donate-button" type="submit">Donate Now</button>
             </a>
             <small>Posted at: {donation.date}</small>
