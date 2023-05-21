@@ -1,37 +1,42 @@
 .bards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
 }
 
 .bard {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 50%;
-    margin: 10px;
-    text-align: center;
-    font-family: sans-serif;
-    background-color: white;
-    border-radius: 5px;
-    flex: 0 1 calc(33.33% - 20px);
+  order: 1;
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 50%;
+  text-align: center;
+  font-family: sans-serif;
+  background-color: white;
+  border-radius: 5px;
 }
 
-  .price {
-    color: grey;
-    font-size: 22px;
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.bard button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.bard button:hover {
+  opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+  .bards {
+    flex-direction: row;
   }
-  
-  .bard button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-  
-  .bard button:hover {
-    opacity: 0.7;
-  }
+}

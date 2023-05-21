@@ -158,7 +158,7 @@ function ArtworkForm() {
             </div>
             <br></br>
             <div className="text-green text-center"></div>
-            <button className="font-bold mt-10 w-full  bg-red-700 hover:bg-red-500  text-white rounded p-2 shadow-lg">
+            <button className="font-bold mt-10 w-full  bg-blue-900  text-white rounded p-2 shadow-lg">
               List Art
             </button>
           </form>
