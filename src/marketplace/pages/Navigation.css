@@ -1,12 +1,12 @@
 body {
   font-family: sans-serif;
-  background-color: #c9a7eb;
+  background-color: aliceblue;
 }
 
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   overflow: hidden;
   background-color: #2a3364;
 }
@@ -18,13 +18,15 @@ li {
 li a {
   display: block;
   color: white;
+  font-weight: bold;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
 li a:hover:not(.active) {
-  background-color: #8d72e1;
+  background-color: white;
+  color: black;
 }
 
 .activeList {
