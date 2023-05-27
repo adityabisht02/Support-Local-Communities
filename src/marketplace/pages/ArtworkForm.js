@@ -67,7 +67,6 @@ function ArtworkForm() {
       promise.then(
         function (response) {
           console.log("file uploaded to bucket!!!");
-          console.log(response); // Success
         },
         function (error) {
           console.log("The following error ", error); // Failure
