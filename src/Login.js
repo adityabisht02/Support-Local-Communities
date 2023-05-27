@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Client, ID, Account } from "appwrite";
-import { Server } from "./utils/config";
+import api from "./apis/apis";
 function Login() {
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
   const [formParams, updateFormParams] = useState({
@@ -17,28 +16,10 @@ function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const client = new Client();
 
-    const account = new Account(client);
-
-    client
-      .setEndpoint(Server.endpoint) // Your API Endpoint
-      .setProject(Server.project); // Your project ID
-
-    const promise = account.createEmailSession(
-      formParams.email,
-      formParams.password
-    );
-
-    promise.then(
-      function (response) {
-        console.log(response); // Success
-        setUserLoggedIn(true);
-      },
-      function (error) {
-        console.log(error); // Failure
-      }
-    );
+    const result = api.createSession(formParams.email, formParams.password);
+    console.log(result);
+    setUserLoggedIn(result);
   }
 
   return (

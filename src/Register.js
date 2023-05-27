@@ -1,31 +1,23 @@
 import { React, useState } from "react";
-import { Client, ID, Account } from "appwrite";
-import { Server } from "./utils/config";
 import api from "./apis/apis";
+import { useNavigate } from "react-router-dom";
 function Register() {
   const [formParams, updateFormParams] = useState({
     name: "",
     email: "",
     password: "",
   });
-
-  function handleSubmit(e) {
+  const navigate = useNavigate();
+  async function handleSubmit(e) {
     e.preventDefault();
-    const promise = api.createAccount(
-      ID.unique(),
+    //send only email, password and name , id is being handled by apis.js
+    const result = await api.createAccount(
       formParams.email,
       formParams.password,
       formParams.name
     );
-
-    promise.then(
-      function (response) {
-        console.log(response); // Success
-      },
-      function (error) {
-        console.log(error); // Failure
-      }
-    );
+    console.log(result);
+    navigate("/login");
   }
 
   return (

@@ -3,7 +3,7 @@ import Navigation from "./Navigation";
 import "./Home.css";
 import HeroSection from "./HeroSection";
 import Footer from "./Footer";
-
+import api from "./apis/apis";
 const Home = () => {
   return (
     <React.Fragment>
