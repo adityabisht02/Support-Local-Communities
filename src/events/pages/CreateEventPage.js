@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Client as Appwrite, Databases } from "appwrite";
-import { Server } from "../utils/config";
 import Navigation from "../components/navigation/Navigation";
 import "./CreateEventPage.css";
+import api from "../../apis/apis";
 
 const CreateEvent = () => {
   const [Name, setName] = useState("");
@@ -18,10 +17,6 @@ const CreateEvent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const appwrite = new Appwrite();
-      const database = new Databases(appwrite);
-      appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
-
       const data = {
         Name,
         Description,
@@ -34,12 +29,7 @@ const CreateEvent = () => {
         EndTime,
       };
 
-      const response = await database.createDocument(
-        Server.databaseID,
-        Server.collectionID,
-        "unique()",
-        data
-      );
+      const response = await api.createEvent(data);
       console.log("Document created:");
       if (response) {
         window.location.replace("/events");
