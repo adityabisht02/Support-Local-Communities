@@ -22,14 +22,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    
     "extends": [
       "react-app",
       "react-app/jest"
@@ -48,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "appwrite-cli": "^2.0.2",
     "gh-pages": "^5.0.0",
     "tailwindcss": "^3.3.2"
   }

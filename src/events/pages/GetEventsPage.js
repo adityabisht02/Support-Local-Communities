@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Client as Appwrite, Databases, Locale, Query } from "appwrite";
+import {
+  Client as Appwrite,
+  Databases,
+  Locale,
+  Query,
+  Functions,
+} from "appwrite";
 import { Server } from "../utils/config";
 import Navigation from "../components/navigation/Navigation";
 import "./EventListsPage.css";
@@ -14,18 +20,21 @@ const GetEvents = () => {
         const database = new Databases(appwrite);
         const locale = new Locale(appwrite);
         appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
+        const trackUserFunctionID = Server.trackUserLocationFunctionID;
         const promise = await locale.get();
-        const location = await fetch(
-          `https://ipgeolocation.abstractapi.com/v1/?api_key=1f2b9a1faf86493db202d2e400534b03&ip_address=${promise.ip}`
-        );
+        const functions = new Functions(appwrite);
+        const ip = promise.ip;
+        const payload = `{"ip": "${ip}"}`;
 
-        const city = await location.json();
+        // tracking the user location by Appwrite Cloud Track User Location Function
+        const data = functions.createExecution(trackUserFunctionID, payload);
+        const city = (await data).response;
         console.log(city);
 
         const response = await database.listDocuments(
           databaseId,
           collectionId,
-          [Query.search("City", city.city), Query.orderAsc("Name")]
+          [Query.search("City", city), Query.orderAsc("Name")]
         );
         // console.log("List of documents:", response.documents);
         setDocuments(response.documents);
