@@ -8,58 +8,56 @@ function Navbar() {
   const [account, setAccount] = useState("");
 
   return (
-    <div className="py-6">
+    <div className="py-1">
       <div className="container flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
-        <div className="text-lg font-bold">Support-Local</div>
+        <div className="text-xl font-bold">Support-Local</div>
         <div className="hidden md:flex space-x-12 items-center">
-          <Link to="/" className=" hover:text-red-bg-btn font-bold">
+          <Link to="/" className=" hover:text-blue-800 font-bold text-xl">
             Home
           </Link>
           {/* Dropdown navbar element */}
           <div className="dropdown">
-            <Link
-              to="/ticketlisting"
-              className="hover:text-red-bg-btn font-bold dropbtn"
-            >
+            <Link to="/" className="hover:text-blue-800 font-bold text-xl">
               Events
             </Link>
             <div className="dropdown-content">
-              <Link to="/user">Link1</Link>
-              <Link to="/user">Link1</Link>
-              <Link to="/user">Link1</Link>
+              <Link to="/events">Events</Link>
+              <Link to="/createEvent">Create event</Link>
             </div>
           </div>
 
           <div className="dropdown">
             <Link
-              to="/ticketlisting"
-              className="hover:text-red-bg-btn font-bold dropbtn"
+              to="/"
+              className="hover:text-blue-800 font-bold text-xl dropbtn"
             >
               Donations
             </Link>
             <div className="dropdown-content">
-              <Link to="/user">Link1</Link>
+              <Link to="/createDonation">Create fundraiser</Link>
 
-              <Link to="/user">Link1</Link>
-              <Link to="/user">Link1</Link>
+              <Link to="/donations">Donations</Link>
             </div>
           </div>
           <div className="dropdown">
             <Link
-              to="/ticketlisting"
-              className="hover:text-red-bg-btn font-bold dropbtn"
+              to="/"
+              className="hover:text-blue-800 font-bold text-xl dropbtn"
             >
               Marketplace
             </Link>
             <div className="dropdown-content">
-              <Link to="/user">Link1</Link>
-              <Link to="/user">Link1</Link>
-              <Link to="/user">Link1</Link>
+              <Link className="font-semibold items-center" to="/marketplace">
+                Marketplace
+              </Link>
+              <Link className="font-semibold items-center" to="/artworkform">
+                Submit Art
+              </Link>
             </div>
           </div>
 
           {/* logout the user */}
-          <button className="px-6 py-2 bg-red-bg-btn hover:bg-red-500 font-bold text-white">
+          <button className="px-6 py-2  bg-blue-900 hover:bg-blue-700 font-bold text-white text-xl">
             Logout
           </button>
         </div>
