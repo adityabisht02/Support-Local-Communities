@@ -1,15 +1,15 @@
 import React from "react";
 import Navigation from "./Navigation";
-import "./Home.css";
+import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import Footer from "./Footer";
 import api from "./apis/apis";
 const Home = () => {
   return (
-    <React.Fragment>
-      <Navigation />
+    <div>
+      <Navbar />
       <HeroSection />
-      <section className="bards">
+      {/* <section className="bards">
         <div className="bard">
           <img
             src="https://www.businessleader.co.uk/wp-content/uploads/2021/12/iStock-671263770-1024x642.jpg"
@@ -55,11 +55,11 @@ const Home = () => {
             </a>
           </p>
         </div>
-      </section>
+      </section> */}
       <div className="footer-home">
         <Footer />
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
