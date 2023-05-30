@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Client as Appwrite, Databases } from "appwrite";
-import { Server } from "../utils/config";
-import {
-  AiOutlineMail,
-  AiOutlinePhone,
-  AiOutlineCalendar,
-  AiOutlineEnvironment,
-} from "react-icons/ai";
-import { FaMoneyBillWave } from "react-icons/fa";
-import { IoIosCreate } from "react-icons/io";
 import "./Donation.css";
 import Navigation from "./Navigation";
 
@@ -16,6 +7,7 @@ const DonationList = () => {
   const [donations, setDonations] = useState([]);
   const [statusFilter, setStatusFilter] = useState("all");
   const [locationFilter, setLocationFilter] = useState("all");
+  const [filteredDonations, setFilteredDonations] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -42,8 +34,30 @@ const DonationList = () => {
     }
   };
 
+  useEffect(() => {
+    applyFilters();
+  }, [donations, statusFilter, locationFilter]);
+
+  const applyFilters = () => {
+    let filteredData = donations;
+
+    if (statusFilter !== "all") {
+      filteredData = filteredData.filter(
+        (donation) => donation.status === statusFilter
+      );
+    }
+
+    if (locationFilter !== "all") {
+      filteredData = filteredData.filter(
+        (donation) => donation.location === locationFilter
+      );
+    }
+
+    setFilteredDonations(filteredData);
+  };
+
   return (
-    <React.Fragment>
+    <>
       <Navigation />
       <div className="donationPost">
         <br />
@@ -80,58 +94,73 @@ const DonationList = () => {
                 <option value="Kolkata">Kolkata</option>
                 <option value="Chennai">Chennai</option>
                 <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Surat">Surat</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Kanpur">Kanpur</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Indore">Indore</option>
+                <option value="Bhopal">Bhopal</option>
+                <option value="Patna">Patna</option>
               </select>
             </div>
           </div>
 
           <div className="donation-cards-container">
-            {donations.map((donation) => (
-              <div key={donation.$id} className="donation-card">
-                {/* {donation.image && <img src={`https://64698f415734ecd90ca9/v1/storage/files/${donation.image}`} alt="Donation" />} */}
-                <img
-                  src={`https://www.gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg`}
-                  alt="donation-images"
-                />
-                <h1 align="center">{donation.title}</h1>
-                <h>{donation.content}</h>
-                <br />
-                <br />
-                <hr />
-                <div align="left">
-                  <h3>Target Amount: ${donation.amount}</h3>
-                  <p>
-                    Donation so far: $
-                    {Math.floor(Math.random(0, donation.amount) * 100)}
-                  </p>
-                  <p>
-                    Email:{" "}
-                    <u>
-                      <a href={`mailto:${donation.email}`}>{donation.email}</a>
-                    </u>
-                  </p>
-                  <p>Phone: {donation.phone}</p>
-                  <p>Location: {donation.location}</p>
-                </div>
-                <div align="center">
-                  <a href={"https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ"} className="payment-link">
-                    <button className="donate-button" type="submit">
-                      Donate Now
-                    </button>
-                  </a>
-                  <a href={`/donations/${donation.$id}`} className="postid">
-                    <button className="donate-button" type="submit">
-                      Go to Post
-                    </button>
-                  </a>
-                </div>
-                <br />
-                <small>Posted at: {donation.date}</small>
+            {filteredDonations.length === 0 ? (
+              <div className="no-donations-message">
+                No nearby donation posts found.
               </div>
-            ))}
+            ) : (
+              filteredDonations.map((donation) => (
+                <div key={donation.$id} className="donation-card">
+                  <img
+                    src={`https://www.gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg`}
+                    alt="donation-images"
+                  />
+                  <h1 align="center">{donation.title}</h1>
+                  <h>{donation.content}</h>
+                  <br />
+                  <br />
+                  <hr />
+                  <div align="left">
+                    <h3>Target Amount: ${donation.amount}</h3>
+                    <p>
+                      Donation so far: $
+                      {Math.floor(Math.random(0, donation.amount) * 100)}
+                    </p>
+                    <p>
+                      Email:{" "}
+                      <u>
+                        <a href={`mailto:${donation.email}`}>{donation.email}</a>
+                      </u>
+                    </p>
+                    <p>Phone: {donation.phone}</p>
+                    <p>Location: {donation.location}</p>
+                  </div>
+                  <div align="center">
+                    <a href={"https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ"} className="payment-link">
+                      <button className="donate-button" type="submit">
+                        Donate Now
+                      </button>
+                    </a>
+                    <a href={`/donations/${donation.$id}`} className="postid">
+                      <button className="donate-button" type="submit">
+                        Go to Post
+                      </button>
+                    </a>
+                  </div>
+                  <br />
+                  <small>Posted at: {donation.date}</small>
+                </div>
+              )))}
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
