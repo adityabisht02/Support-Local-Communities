@@ -284,3 +284,24 @@
 .comment-form button:hover {
   background-color: #0056b3;
 }
+
+.progressBarContainer {
+  width: 100%;
+  height: 20px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background-color: #0f3910;
+  transition: width 0.5s ease-in-out;
+}
+
+.progressBarText {
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}

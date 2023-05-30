@@ -120,6 +120,7 @@ const DonationList = () => {
                   <hr />
                   <div align="left">
                     <h3>Target Amount: ${donation.amount}</h3>
+                    
                     <p>
                       Donation so far: $
                       {Math.floor(Math.random(0, donation.amount) * 100)}
