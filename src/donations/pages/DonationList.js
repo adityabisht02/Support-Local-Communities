@@ -5,14 +5,13 @@ import Navigation from "./Navigation";
 
 const DonationList = () => {
   const [donations, setDonations] = useState([]);
-  const [statusFilter, setStatusFilter] = useState("all");
   const [locationFilter, setLocationFilter] = useState("all");
   const [filteredDonations, setFilteredDonations] = useState([]);
   const [uniqueLocations, setUniqueLocations] = useState([]);
 
   useEffect(() => {
     fetchData();
-  }, [statusFilter, locationFilter]);
+  }, [locationFilter]);
 
   const fetchData = async () => {
     try {
@@ -39,16 +38,11 @@ const DonationList = () => {
 
   useEffect(() => {
     applyFilters();
-  }, [donations, statusFilter, locationFilter]);
+  }, [donations, locationFilter]);
 
   const applyFilters = () => {
     let filteredData = donations;
 
-    if (statusFilter !== "all") {
-      filteredData = filteredData.filter(
-        (donation) => donation.status === statusFilter
-      );
-    }
 
     if (locationFilter !== "all") {
       filteredData = filteredData.filter(
@@ -73,85 +67,72 @@ const DonationList = () => {
               </button>
             </div>
           </div>
-          <div className="filter-container">
-            <div>
-              <label>Status:</label>
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-              >
-                <option value="all">All</option>
-                <option value="open">Open</option>
-                <option value="closed">Closed</option>
-              </select>
-            </div>
-            <div>
-              <label>Location:</label>
-              <select
-                value={locationFilter}
-                onChange={(e) => setLocationFilter(e.target.value)}
-              >
-                <option value="all">All</option>
-                {uniqueLocations.map((location) => (
-                  <option key={location} value={location}>
-                    {location}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div>
+            <label>Location:</label>
+            <select
+              value={locationFilter}
+              onChange={(e) => setLocationFilter(e.target.value)}
+            >
+              <option value="all">All</option>
+              {uniqueLocations.map((location) => (
+                <option key={location} value={location}>
+                  {location}
+                </option>
+              ))}
+            </select>
           </div>
+        </div>
 
-          <div className="donation-cards-container">
-            {filteredDonations.length === 0 ? (
-              <div className="no-donations-message">
-                No nearby donation posts found.
-              </div>
-            ) : (
-              filteredDonations.map((donation) => (
-                <div key={donation.$id} className="donation-card">
-                  <img
-                    src={`https://www.gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg`}
-                    alt="donation-images"
-                  />
-                  <h1 align="center">{donation.title}</h1>
-                  <h>{donation.content}</h>
-                  <br />
-                  <br />
-                  <hr />
-                  <div align="left">
-                    <h3>Target Amount: ${donation.amount}</h3>
-                    
-                    <p>
-                      Donation so far: $
-                      {Math.floor(Math.random(0, donation.amount) * 100)}
-                    </p>
-                    <p>
-                      Email:{" "}
-                      <u>
-                        <a href={`mailto:${donation.email}`}>{donation.email}</a>
-                      </u>
-                    </p>
-                    <p>Phone: {donation.phone}</p>
-                    <p>Location: {donation.location}</p>
-                  </div>
-                  <div align="center">
-                    <a href={"https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ"} className="payment-link">
-                      <button className="donate-button" type="submit">
-                        Donate Now
-                      </button>
-                    </a>
-                    <a href={`/donations/${donation.$id}`} className="postid">
-                      <button className="donate-button" type="submit">
-                        Go to Post
-                      </button>
-                    </a>
-                  </div>
-                  <br />
-                  <small>Posted at: {donation.date}</small>
+        <div className="donation-cards-container">
+          {filteredDonations.length === 0 ? (
+            <div className="no-donations-message">
+              No nearby donation posts found.
+            </div>
+          ) : (
+            filteredDonations.map((donation) => (
+              <div key={donation.$id} className="donation-card">
+                <img
+                  src={`https://www.gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg`}
+                  alt="donation-images"
+                />
+                <h1 align="center">{donation.title}</h1>
+                <h>{donation.content}</h>
+                <br />
+                <br />
+                <hr />
+                <div align="left">
+                  <h3>Target Amount: ${donation.amount}</h3>
+
+                  <p>
+                    Donation so far: $
+                    {Math.floor(Math.random(0, donation.amount) * 100)}
+                  </p>
+                  <p>
+                    Email:{" "}
+                    <u>
+                      <a href={`mailto:${donation.email}`}>{donation.email}</a>
+                    </u>
+                  </p>
+                  <p>Phone: {donation.phone}</p>
+                  <p>Location: {donation.location}</p>
                 </div>
-              ))
-            )}
-          </div>
+                <div align="center">
+                  <a href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ" className="payment-link">
+                    <button className="donate-button" type="submit">
+                      Donate Now
+                    </button>
+                  </a>
+                  <a href={`/donations/${donation.$id}`} className="postid">
+                    <button className="donate-button" type="submit">
+                      Go to Post
+                    </button>
+                  </a>
+                </div>
+                <br />
+                <small>Posted at: {donation.date}</small>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </>
