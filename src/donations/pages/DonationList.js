@@ -8,6 +8,7 @@ const DonationList = () => {
   const [statusFilter, setStatusFilter] = useState("all");
   const [locationFilter, setLocationFilter] = useState("all");
   const [filteredDonations, setFilteredDonations] = useState([]);
+  const [uniqueLocations, setUniqueLocations] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -28,6 +29,8 @@ const DonationList = () => {
 
       if (response.documents) {
         setDonations(response.documents);
+        const uniqueLocations = [...new Set(response.documents.map(donation => donation.location))];
+        setUniqueLocations(uniqueLocations);
       }
     } catch (error) {
       console.error("Error in fetching data:", error);
@@ -89,22 +92,11 @@ const DonationList = () => {
                 onChange={(e) => setLocationFilter(e.target.value)}
               >
                 <option value="all">All</option>
-                <option value="Pune">Pune</option>
-                <option value="Mumbai">Mumbai</option>
-                <option value="Kolkata">Kolkata</option>
-                <option value="Chennai">Chennai</option>
-                <option value="Delhi">Delhi</option>
-                <option value="Bangalore">Bangalore</option>
-                <option value="Hyderabad">Hyderabad</option>
-                <option value="Ahmedabad">Ahmedabad</option>
-                <option value="Jaipur">Jaipur</option>
-                <option value="Surat">Surat</option>
-                <option value="Lucknow">Lucknow</option>
-                <option value="Kanpur">Kanpur</option>
-                <option value="Nagpur">Nagpur</option>
-                <option value="Indore">Indore</option>
-                <option value="Bhopal">Bhopal</option>
-                <option value="Patna">Patna</option>
+                {uniqueLocations.map((location) => (
+                  <option key={location} value={location}>
+                    {location}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -156,7 +148,8 @@ const DonationList = () => {
                   <br />
                   <small>Posted at: {donation.date}</small>
                 </div>
-              )))}
+              ))
+            )}
           </div>
         </div>
       </div>
