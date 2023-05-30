@@ -30,3 +30,8 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.logo-image {
+  width: 100px; 
+  height: auto;
+}

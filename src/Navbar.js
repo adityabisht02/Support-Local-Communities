@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import logo from "./logo.jpg";
 
 function Navbar() {
   const [account, setAccount] = useState("");
@@ -10,7 +11,10 @@ function Navbar() {
   return (
     <div className="py-1">
       <div className="container flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
+      <div className="flex items-center">
+          <img src={logo} alt="Logo" className="logo-image" />
         <div className="text-xl font-bold">Support-Local</div>
+        </div>
         <div className="hidden md:flex space-x-12 items-center">
           <Link to="/" className=" hover:text-blue-800 font-bold text-xl">
             Home
