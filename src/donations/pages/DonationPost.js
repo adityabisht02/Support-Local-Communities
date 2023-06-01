@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Client as Appwrite, Databases } from 'appwrite';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
-
 import './Donation.css';
 import Navigation from './Navigation';
 
