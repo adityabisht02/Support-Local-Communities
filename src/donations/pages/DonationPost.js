@@ -1,134 +1,239 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Client as Appwrite, Databases } from 'appwrite';
-import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
-import './Donation.css';
-import Navigation from './Navigation';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Client as Appwrite, Databases } from "appwrite";
+import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import Navigation from "./Navigation";
 
 const DonationPost = () => {
   const { postId } = useParams();
   const [donation, setDonation] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const appwrite = new Appwrite();
+  const database = new Databases(appwrite);
+  appwrite
+    .setEndpoint("https://cloud.appwrite.io/v1")
+    .setProject(process.env.REACT_APP_PROJECT);
 
   useEffect(() => {
     fetchData();
+    fetchComments();
   }, []);
 
   const fetchData = async () => {
     try {
-      const appwrite = new Appwrite();
-      const database = new Databases(appwrite);
-      appwrite.setEndpoint("https://cloud.appwrite.io/v1").setProject("646848cf83cf66ebfe7c");
-      console.log('postId:', postId);
-      const response = await database.getDocument('64689fe1bca86b952f51', '6468a0342d1d8955e8c3', postId);
-
+      console.log("postId:", postId);
+      const response = await database.getDocument(
+        process.env.REACT_APP_DATABASE_ID,
+        process.env.REACT_APP_DONATION_COLLECTION_ID,
+        postId
+      );
       if (response.$id) {
         setDonation(response);
       }
     } catch (error) {
-      console.error('Error in fetching data:', error);
+      console.error("Error in fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchComments = async () => {
+    try {
+      const response = await database.getDocument(
+        process.env.REACT_APP_DATABASE_ID,
+        process.env.REACT_APP_DONATION_COLLECTION_ID,
+        postId
+      );
+      if (response.$id) {
+        setDonation(response);
+        if (response.comments) {
+          setComments(JSON.parse(response.comments));
+        }
+      }
+    } catch (error) {
+      console.error("Error in fetching comments:", error);
     }
   };
 
   if (!donation) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+      </div>
+    );
   }
 
   const shareOnFacebook = () => {
     const url = window.location.href;
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        url
+      )}`,
+      "_blank"
+    );
   };
 
   const shareOnTwitter = () => {
     const url = window.location.href;
-    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, '_blank');
+    window.open(
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`,
+      "_blank"
+    );
   };
 
   const shareOnLinkedIn = () => {
     const url = window.location.href;
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+    window.open(
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+        url
+      )}`,
+      "_blank"
+    );
+  };
+
+  const submitComment = async (event) => {
+    event.preventDefault();
+    const commentText = event.target.elements.comment.value;
+    try {
+      const updatedComments = [...comments, commentText];
+      const response = await database.updateDocument(
+        process.env.REACT_APP_DATABASE_ID,
+        process.env.REACT_APP_DONATION_COLLECTION_ID,
+        postId,
+        {
+          comments: JSON.stringify(updatedComments),
+        }
+      );
+
+      if (response.$id) {
+        setComments(updatedComments);
+        alert("Comment submitted successfully!");
+        event.target.reset();
+      }
+    } catch (error) {
+      console.error("Error in submitting comment:", error);
+    }
   };
 
   return (
-    <React.Fragment>
-    <Navigation/>
-    <div className='donationPost'>
-      <div className="donation-list">
-        <div className="title">
-          <p>Donation Post</p>
-        </div>
-
-        <div className="donation-card">
-          <div className="donation-card-image">
-            <img src={`https://www.gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg`} alt='donation-images' />
-          </div>
-        </div>
-
-        <div className="donation-content">
-          <h1>{donation.title}</h1>
-          <p>{donation.content}</p>
-
-          <div className="donation-details">
-            <div className="donation-detail">
-              <h3>Target Amount:</h3>
-              <p>${donation.amount}</p>
-            </div>
-            <div className="donation-detail">
-              <h3>Donation so far:</h3>
-              <p>${Math.floor(Math.random() * donation.amount)}</p>
-            </div>
-            <div className="donation-detail">
-              <h3>Email:</h3>
-              <p><u><a href={`mailto:${donation.email}`}>{donation.email}</a></u></p>
-            </div>
-            <div className="donation-detail">
-              <h3>Phone:</h3>
-              <p>{donation.phone}</p>
-            </div>
-            <div className="donation-detail">
-              <h3>Location:</h3>
-              <p>{donation.location}</p>
-            </div>
-          </div>
-
-          <div className="donation-actions">
-            <a href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ" className="payment-link">
-              <button className="donate-button" type="submit">Donate Now</button>
-            </a>
-            <small>Posted at: {donation.date}</small>
-          </div>
-        </div>
-      <hr/>
-        <div className="share-buttons">
-          <p>Share this post:</p>
-          <div className="social-icons">
-            <FaFacebook onClick={shareOnFacebook} size={50} />
-            <FaTwitter onClick={shareOnTwitter} size={50} />
-            <FaLinkedin onClick={shareOnLinkedIn} size={50} />
-          </div>
-        </div>
-      <hr/>
-        <div className="comments">
-          <div className="comment-box">
-            <h3>Comments</h3>
-            <div className="comment">
-              <p>Comment 1</p>
-              <p>Comment 2</p>
-              <p>Comment 3</p>
+    <>
+      <Navigation />
+      <div className="container mx-auto px-4">
+        <div className="donationPost">
+          <div className="donation-list">
+            <div className="title">
+              <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">
+                {donation.title}
+              </p>
             </div>
 
-            <div className="comment-form">
-              <h3>Leave a comment</h3>
-              <form>
-                <input type="text" placeholder="Name" />
-                <textarea placeholder="Comment" />
-                <button type="submit">Submit</button>
-              </form>
+            <div className="donation-card flex flex-wrap">
+              <div className="donation-card-description w-full lg:w-1/2">
+                <p className="mt-4">{donation.content}</p>
+                <div className="donation-details mt-6">
+
+                  <div className="donation-detail">
+                    <h3 className="font-bold">Target Amount:</h3>
+                    <p>${donation.amount}</p>
+                    <div className="w-full bg-gray-200 h-3 rounded-full mt-2">
+                      <div className="bg-blue-500 h-full rounded-full" style={{ width: `${Math.floor((donation.amount - (Math.floor(Math.random() * donation.amount) % donation.amount)) / donation.amount * 100)}%` }}></div>
+                    </div>
+                  </div>
+
+                  <div className="donation-detail">
+                    <h3 className="font-bold">Email:</h3>
+                    <p>
+                      <u>
+                        <a href={`mailto:${donation.email}`}>{donation.email}</a>
+                      </u>
+                    </p>
+                  </div>
+                  <div className="donation-detail">
+                    <h3 className="font-bold">Phone:</h3>
+                    <p>{donation.phone}</p>
+                  </div>
+                  <div className="donation-detail">
+                    <h3 className="font-bold">Location:</h3>
+                    <p>{donation.location}</p>
+                  </div>
+                </div>
+
+                <div className="donation-actions mt-6">
+                  <a
+                    href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ"
+                    className="payment-link"
+                  >
+                    <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" type="submit">
+                      Donate Now
+                    </button>
+                  </a>
+                  <br />
+                  <small>Posted at: {donation.date}</small>
+                </div>
+              </div>
+              <div className="donation-card-image w-full lg:w-1/2">
+                <img
+                  src={donation.image}
+                  alt="donation-images"
+                />
+              </div>
+            </div>
+
+            <hr className="mt-8" />
+            <div className="share-buttons mt-8">
+              <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">Share this post</p>
+              <div className="social-icons mt-4">
+                <FaFacebook
+                  onClick={shareOnFacebook}
+                  size={50}
+                  className="mr-4 cursor-pointer"
+                />
+                <FaTwitter
+                  onClick={shareOnTwitter}
+                  size={50}
+                  className="mr-4 cursor-pointer"
+                />
+                <FaLinkedin
+                  onClick={shareOnLinkedIn}
+                  size={50}
+                  className="mr-4 cursor-pointer"
+                />
+              </div>
+            </div>
+            <hr className="mt-8" />
+            <div className="comments mt-8">
+              <div className="comment-box">
+                <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">Comments</p>
+                <div className="comment">
+                  {comments.map((comment, index) => (
+                    <p key={index}>{comment}</p>
+                  ))}
+                </div>
+
+                <div className="comment-form mt-4">
+                  <h3>Leave a comment</h3>
+                  <form onSubmit={submitComment}>
+                    <textarea
+                      className="w-full p-2 rounded"
+                      placeholder="Comment"
+                      name="comment"
+                      required
+                    />
+                    <button
+                      className="mt-2 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    </React.Fragment>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Client as Appwrite, Databases } from "appwrite";
-import "./Donation.css";
 import Navigation from "./Navigation";
 
 const DonationList = () => {
@@ -43,7 +42,6 @@ const DonationList = () => {
   const applyFilters = () => {
     let filteredData = donations;
 
-
     if (locationFilter !== "all") {
       filteredData = filteredData.filter(
         (donation) => donation.location === locationFilter
@@ -56,57 +54,54 @@ const DonationList = () => {
   return (
     <>
       <Navigation />
-      <div className="donationPost">
-        <br />
-        <div className="donation-list">
-          <div className="title">
-            <p>Donation List</p>
-            <div className="addDonation" align="center">
-              <button type="submit">
-                <a href="/createDonation">Create a donation post</a>
-              </button>
-            </div>
-          </div>
-          <div>
-            <label>Location:</label>
-            <select
-              value={locationFilter}
-              onChange={(e) => setLocationFilter(e.target.value)}
-            >
-              <option value="all">All</option>
-              {uniqueLocations.map((location) => (
-                <option key={location} value={location}>
-                  {location}
-                </option>
-              ))}
-            </select>
+      <div className="container mx-auto py-8">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold">Donation List</h1>
+          <div className="mt-4">
+            <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+              <a href="/createDonation">Create a donation post</a>
+            </button>
           </div>
         </div>
-
-        <div className="donation-cards-container">
+        <div className="mb-4">
+          <label className="block">Location:</label>
+          <select
+            value={locationFilter}
+            onChange={(e) => setLocationFilter(e.target.value)}
+            className="py-2 px-4 border border-gray-300 rounded"
+          >
+            <option value="all">All</option>
+            {uniqueLocations.map((location) => (
+              <option key={location} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredDonations.length === 0 ? (
-            <div className="no-donations-message">
+            <div className="text-center text-gray-500">
               No nearby donation posts found.
             </div>
           ) : (
             filteredDonations.map((donation) => (
-              <div key={donation.$id} className="donation-card">
+              <div key={donation.$id} className="bg-white shadow rounded p-4">
                 <img
-                  src={`https://www.gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg`}
+                  src={donation.image}
                   alt="donation-images"
+                  className="w-full h-40 object-cover mb-4 rounded"
                 />
-                <h1 align="center">{donation.title}</h1>
-                <h>{donation.content}</h>
-                <br />
-                <br />
-                <hr />
-                <div align="left">
-                  <h3>Target Amount: ${donation.amount}</h3>
-
-                  <p>
-                    Donation so far: $
-                    {Math.floor(Math.random(0, donation.amount) * 100)}
-                  </p>
+                <h2 className="text-xl font-bold text-center">{donation.title}</h2>
+                <p className="mt-2 text-gray-600">{donation.content}</p>
+                <hr className="my-4" />
+                <div>
+                <div className="donation-detail">
+                    <h3 className="font-bold">Target Amount:</h3>
+                    <p>${donation.amount}</p>
+                    <div className="w-full bg-gray-200 h-3 rounded-full mt-2">
+                      <div className="bg-blue-500 h-full rounded-full" style={{ width: `${Math.floor((donation.amount - (Math.floor(Math.random() * donation.amount) % donation.amount)) / donation.amount * 100)}%` }}></div>
+                    </div>
+                  </div>
                   <p>
                     Email:{" "}
                     <u>
@@ -116,16 +111,12 @@ const DonationList = () => {
                   <p>Phone: {donation.phone}</p>
                   <p>Location: {donation.location}</p>
                 </div>
-                <div align="center">
-                  <a href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ" className="payment-link">
-                    <button className="donate-button" type="submit">
-                      Donate Now
-                    </button>
+                <div className="text-center mt-4">
+                  <a href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ" className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                    Donate Now
                   </a>
-                  <a href={`/donations/${donation.$id}`} className="postid">
-                    <button className="donate-button" type="submit">
-                      Go to Post
-                    </button>
+                  <a href={`/donations/${donation.$id}`} className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded ml-2">
+                    Go to Post
                   </a>
                 </div>
                 <br />
