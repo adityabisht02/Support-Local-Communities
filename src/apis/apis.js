@@ -82,7 +82,7 @@ let api = {
       postId
     );
   },
-  //update donations collection
+  //update donations collection with comment
   addComment: async (postId, updatedComments) => {
     return await database.updateDocument(
       Server.databaseID,
