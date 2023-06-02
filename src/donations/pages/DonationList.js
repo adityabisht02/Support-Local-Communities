@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Client as Appwrite, Databases } from "appwrite";
 import Navigation from "./Navigation";
-
+import api from "../../apis/apis";
 const DonationList = () => {
   const [donations, setDonations] = useState([]);
   const [locationFilter, setLocationFilter] = useState("all");
@@ -14,20 +13,13 @@ const DonationList = () => {
 
   const fetchData = async () => {
     try {
-      const appwrite = new Appwrite();
-      const database = new Databases(appwrite);
-      appwrite
-        .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("646848cf83cf66ebfe7c");
-
-      const response = await database.listDocuments(
-        "64689fe1bca86b952f51",
-        "6468a0342d1d8955e8c3"
-      );
-
+      const response = await api.getAllDonationPosts();
+      console.log(response);
       if (response.documents) {
         setDonations(response.documents);
-        const uniqueLocations = [...new Set(response.documents.map(donation => donation.location))];
+        const uniqueLocations = [
+          ...new Set(response.documents.map((donation) => donation.location)),
+        ];
         setUniqueLocations(uniqueLocations);
       }
     } catch (error) {
@@ -91,15 +83,28 @@ const DonationList = () => {
                   alt="donation-images"
                   className="w-full h-40 object-cover mb-4 rounded"
                 />
-                <h2 className="text-xl font-bold text-center">{donation.title}</h2>
+                <h2 className="text-xl font-bold text-center">
+                  {donation.title}
+                </h2>
                 <p className="mt-2 text-gray-600">{donation.content}</p>
                 <hr className="my-4" />
                 <div>
-                <div className="donation-detail">
+                  <div className="donation-detail">
                     <h3 className="font-bold">Target Amount:</h3>
                     <p>${donation.amount}</p>
                     <div className="w-full bg-gray-200 h-3 rounded-full mt-2">
-                      <div className="bg-blue-500 h-full rounded-full" style={{ width: `${Math.floor((donation.amount - (Math.floor(Math.random() * donation.amount) % donation.amount)) / donation.amount * 100)}%` }}></div>
+                      <div
+                        className="bg-blue-500 h-full rounded-full"
+                        style={{
+                          width: `${Math.floor(
+                            ((donation.amount -
+                              (Math.floor(Math.random() * donation.amount) %
+                                donation.amount)) /
+                              donation.amount) *
+                              100
+                          )}%`,
+                        }}
+                      ></div>
                     </div>
                   </div>
                   <p>
@@ -112,10 +117,16 @@ const DonationList = () => {
                   <p>Location: {donation.location}</p>
                 </div>
                 <div className="text-center mt-4">
-                  <a href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ" className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                  <a
+                    href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ"
+                    className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                  >
                     Donate Now
                   </a>
-                  <a href={`/donations/${donation.$id}`} className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded ml-2">
+                  <a
+                    href={`/donations/${donation.$id}`}
+                    className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded ml-2"
+                  >
                     Go to Post
                   </a>
                 </div>

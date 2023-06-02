@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Client as Appwrite, Databases } from "appwrite";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import Navigation from "./Navigation";
+import api from "../../apis/apis";
 
 const DonationPost = () => {
   const { postId } = useParams();
   const [donation, setDonation] = useState(null);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const appwrite = new Appwrite();
-  const database = new Databases(appwrite);
-  appwrite
-    .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject(process.env.REACT_APP_PROJECT);
 
   useEffect(() => {
     fetchData();
@@ -23,11 +18,7 @@ const DonationPost = () => {
   const fetchData = async () => {
     try {
       console.log("postId:", postId);
-      const response = await database.getDocument(
-        process.env.REACT_APP_DATABASE_ID,
-        process.env.REACT_APP_DONATION_COLLECTION_ID,
-        postId
-      );
+      const response = await api.getDonationPost(postId);
       if (response.$id) {
         setDonation(response);
       }
@@ -40,11 +31,7 @@ const DonationPost = () => {
 
   const fetchComments = async () => {
     try {
-      const response = await database.getDocument(
-        process.env.REACT_APP_DATABASE_ID,
-        process.env.REACT_APP_DONATION_COLLECTION_ID,
-        postId
-      );
+      const response = await api.getDonationPost(postId);
       if (response.$id) {
         setDonation(response);
         if (response.comments) {
@@ -67,9 +54,7 @@ const DonationPost = () => {
   const shareOnFacebook = () => {
     const url = window.location.href;
     window.open(
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        url
-      )}`,
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
       "_blank"
     );
   };
@@ -97,14 +82,7 @@ const DonationPost = () => {
     const commentText = event.target.elements.comment.value;
     try {
       const updatedComments = [...comments, commentText];
-      const response = await database.updateDocument(
-        process.env.REACT_APP_DATABASE_ID,
-        process.env.REACT_APP_DONATION_COLLECTION_ID,
-        postId,
-        {
-          comments: JSON.stringify(updatedComments),
-        }
-      );
+      const response = await api.addComment(postId, updatedComments);
 
       if (response.$id) {
         setComments(updatedComments);
@@ -132,12 +110,22 @@ const DonationPost = () => {
               <div className="donation-card-description w-full lg:w-1/2">
                 <p className="mt-4">{donation.content}</p>
                 <div className="donation-details mt-6">
-
                   <div className="donation-detail">
                     <h3 className="font-bold">Target Amount:</h3>
                     <p>${donation.amount}</p>
                     <div className="w-full bg-gray-200 h-3 rounded-full mt-2">
-                      <div className="bg-blue-500 h-full rounded-full" style={{ width: `${Math.floor((donation.amount - (Math.floor(Math.random() * donation.amount) % donation.amount)) / donation.amount * 100)}%` }}></div>
+                      <div
+                        className="bg-blue-500 h-full rounded-full"
+                        style={{
+                          width: `${Math.floor(
+                            ((donation.amount -
+                              (Math.floor(Math.random() * donation.amount) %
+                                donation.amount)) /
+                              donation.amount) *
+                              100
+                          )}%`,
+                        }}
+                      ></div>
                     </div>
                   </div>
 
@@ -145,7 +133,9 @@ const DonationPost = () => {
                     <h3 className="font-bold">Email:</h3>
                     <p>
                       <u>
-                        <a href={`mailto:${donation.email}`}>{donation.email}</a>
+                        <a href={`mailto:${donation.email}`}>
+                          {donation.email}
+                        </a>
                       </u>
                     </p>
                   </div>
@@ -164,7 +154,10 @@ const DonationPost = () => {
                     href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ"
                     className="payment-link"
                   >
-                    <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" type="submit">
+                    <button
+                      className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                      type="submit"
+                    >
                       Donate Now
                     </button>
                   </a>
@@ -173,16 +166,15 @@ const DonationPost = () => {
                 </div>
               </div>
               <div className="donation-card-image w-full lg:w-1/2">
-                <img
-                  src={donation.image}
-                  alt="donation-images"
-                />
+                <img src={donation.image} alt="donation-images" />
               </div>
             </div>
 
             <hr className="mt-8" />
             <div className="share-buttons mt-8">
-              <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">Share this post</p>
+              <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">
+                Share this post
+              </p>
               <div className="social-icons mt-4">
                 <FaFacebook
                   onClick={shareOnFacebook}
@@ -204,15 +196,22 @@ const DonationPost = () => {
             <hr className="mt-8" />
             <div className="comments mt-8">
               <div className="comment-box">
-                <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">Comments</p>
+                <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">
+                  Comments
+                </p>
                 <div className="comment">
                   {comments.map((comment, index) => (
-                    <p key={index}><br/>{comment}</p>
+                    <p key={index}>
+                      <br />
+                      {comment}
+                    </p>
                   ))}
                 </div>
 
                 <div className="comment-form mt-4">
-                  <p className="text-2xl font-bold text-blue-700 mb-8 flex items-center justify-center">Add a comment</p>
+                  <p className="text-2xl font-bold text-blue-700 mb-8 flex items-center justify-center">
+                    Add a comment
+                  </p>
                   <form onSubmit={submitComment}>
                     <textarea
                       className="w-full p-2 rounded"

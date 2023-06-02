@@ -61,6 +61,39 @@ let api = {
     return await account.deleteSession("current");
   },
 
+  createDonationPost: async (data) => {
+    return await database.createDocument(
+      Server.databaseID,
+      Server.donationcollectionID,
+      ID.unique(),
+      data
+    );
+  },
+  getAllDonationPosts: async () => {
+    return await database.listDocuments(
+      Server.databaseID,
+      Server.donationcollectionID
+    );
+  },
+  getDonationPost: async (postId) => {
+    return await database.getDocument(
+      Server.databaseID,
+      Server.donationcollectionID,
+      postId
+    );
+  },
+  //update donations collection
+  addComment: async (postId, updatedComments) => {
+    return await database.updateDocument(
+      Server.databaseID,
+      Server.donationcollectionID,
+      postId,
+      {
+        comments: JSON.stringify(updatedComments),
+      }
+    );
+  },
+
   eventslists: async () => {
     return await database.listDocuments(
       Server.databaseID,
@@ -73,7 +106,7 @@ let api = {
     return await database.createDocument(
       Server.databaseID,
       Server.eventscollectionID,
-      "unique()",
+      ID.unique(),
       data
     );
   },
