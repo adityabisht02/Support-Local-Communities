@@ -1,25 +1,65 @@
 import React from "react";
+import './HeroSection.css';
+import { Link } from "react-router-dom";
+import Airport from './assets/airport.png';
+import Tree from './assets/tree.gif';
+import Route from './assets/route.gif';
+import Event from './assets/event.png';
+import Donation from './assets/donation.png';
+import Waves from './assets/waves.gif';
+import Parachute from './assets/parachute.gif';
+import MarketPlace from './assets/marketplace.png';
 
 function HeroSection() {
   return (
-    <div className="flex lg:ml-20 justify-center max-w-xl md:my-35 mt-11 pt-5 h-screen">
-      <div className="mt-19 pt-20">
-        <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl text-center md:text-left">
-          Support Local Communities
+    <>
+      <div className="flex justify-center">
+        <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl">
+          <span>Support Local Communities</span>
         </h1>
-        <p className="mt-3 section-paragraph text-lg">
-          Revitalize your community, Organize and manage events with location
-          based event management, easy to organize charities and fundraisers and
-          display your local artwork to the world!!
-        </p>
       </div>
 
-      <img
-        src="https://www.businessleader.co.uk/wp-content/uploads/2021/12/iStock-671263770-1024x642.jpg"
-        alt="ticket"
-        className="w-1/2 mt-12 md:absolute md:mt-0 right-5 -z-1 border-10"
-      />
-    </div>
+      <div className="hero-section grid grid-cols-2 gap-8 justify-center items-center">
+        <div className="flex flex-col items-center left shadow-lg">
+          <img src={Airport} alt="airport" />
+          <p className="mt-3 section-paragraph text-lg">
+            Revitalize your community, Organize and manage events with location
+            based event management, easy to organize charities and fundraisers and
+            display your local artwork to the world!!
+          </p>
+        </div>
+        <div className="flex flex-col items-center right">
+          <img src={Tree} alt="tree" height={600} />
+        </div>
+        <div className="flex flex-col items-center left">
+          <img src={Route} alt="route" />
+        </div>
+        <div className="flex flex-col items-center right shadow-lg">
+          <img src={Event} alt="event" />
+          <h3 className="text-2xl text-black">Events</h3>
+          <p className="text-purple-300">Discover and join local events happening in your community.</p>
+          <Link to="/events" className="btn-primary">Explore Events</Link>
+        </div>
+        <div className="flex flex-col items-center left shadow-lg">
+          <img src={Donation} alt="donation" />
+          <h3 className="text-2xl text-black">Donation</h3>
+          <p className="text-purple-300">Support local charities and make a difference in your community.</p>
+          <Link to="/donations" className="btn-primary">Donate Now</Link>
+        </div>
+        <div className="flex flex-col items-center right">
+          <img src={Waves} alt="route" />
+        </div>
+        <div className="flex flex-col items-center left">
+          <img src={Parachute} alt="route" />
+        </div>
+        <div className="flex flex-col items-center right shadow-lg">
+          <img src={MarketPlace} alt="marketplace" />
+          <h3 className="text-2xl text-black">Art</h3>
+          <p className="text-purple-300">Showcasing local artists and their incredible creations.</p>
+          <Link to="/marketplace" className="btn-primary">Explore Art</Link>
+        </div>
+      </div>
+    </>
   );
 }
 

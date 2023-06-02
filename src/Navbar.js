@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "./logo.jpg";
+import logo from "./assets/logo.png";
 
 function Navbar() {
   const [account, setAccount] = useState("");
