@@ -207,12 +207,12 @@ const DonationPost = () => {
                 <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">Comments</p>
                 <div className="comment">
                   {comments.map((comment, index) => (
-                    <p key={index}>{comment}</p>
+                    <p key={index}><br/>{comment}</p>
                   ))}
                 </div>
 
                 <div className="comment-form mt-4">
-                  <h3>Leave a comment</h3>
+                  <p className="text-2xl font-bold text-blue-700 mb-8 flex items-center justify-center">Add a comment</p>
                   <form onSubmit={submitComment}>
                     <textarea
                       className="w-full p-2 rounded"
