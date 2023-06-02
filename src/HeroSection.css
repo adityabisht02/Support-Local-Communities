@@ -35,3 +35,25 @@
     padding-top: 0px;
     padding-bottom: 5px;
 }
+
+.aeroplane-animation {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    animation: moveAeroplane 8s infinite linear;
+}
+
+@keyframes moveAeroplane {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(1500px);
+    }
+}
+
+.aeroplane {
+    width: 100%;
+    height: 100%;
+}

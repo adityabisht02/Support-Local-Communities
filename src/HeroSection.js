@@ -9,16 +9,20 @@ import Donation from './assets/donation.png';
 import Waves from './assets/waves.gif';
 import Parachute from './assets/parachute.gif';
 import MarketPlace from './assets/marketplace.png';
+import Aeroplane from './assets/aeroplane.png';
 
 function HeroSection() {
   return (
     <>
+     <div className="aeroplane-animation">
+        <img src={Aeroplane} alt="aeroplane" className="aeroplane" />
+      </div>
       <div className="flex justify-center">
         <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl">
           <span>Support Local Communities</span>
         </h1>
       </div>
-
+     
       <div className="hero-section grid grid-cols-2 gap-8 justify-center items-center">
         <div className="flex flex-col items-center left shadow-lg">
           <img src={Airport} alt="airport" />
@@ -58,6 +62,9 @@ function HeroSection() {
           <p className="text-purple-300">Showcasing local artists and their incredible creations.</p>
           <Link to="/marketplace" className="btn-primary">Explore Art</Link>
         </div>
+      </div>
+      <div className="aeroplane-animation">
+        <img src={Aeroplane} alt="aeroplane" className="aeroplane" />
       </div>
     </>
   );
