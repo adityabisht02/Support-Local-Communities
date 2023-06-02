@@ -1,9 +1,9 @@
 import { Server } from "../utils/config";
 import { Client, Storage, Databases } from "appwrite";
 
-const client = new Client();
+const appwriteClient = new Client();
 
-client
+appwriteClient
   .setEndpoint(Server.endpoint) // Your API Endpoint
   .setProject(Server.project); // Your project ID
 

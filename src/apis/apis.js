@@ -21,20 +21,44 @@ const locale = new Locale(client);
 const functions = new Functions(client);
 
 let api = {
-  createAccount: (email, password, name) => {
-    return account.create(ID.unique(), email, password, name);
+  createAccount: async (email, password, name) => {
+    return await account.create(ID.unique(), email, password, name);
   },
 
-  getAccount: () => {
-    return account.get();
+  getAccount: async () => {
+    return await account.get();
   },
   //creates user session valid till one year
-  createSession: (email, password) => {
-    return account.createEmailSession(email, password);
+  createSession: async (email, password) => {
+    return await account.createEmailSession(email, password);
   },
-
-  deleteCurrentSession: () => {
-    return account.deleteSession("current");
+  //upload image to bucket
+  uploadImageToMarket: async (fileID, file) => {
+    return await storage.createFile(Server.bucketID, fileID, file);
+  },
+  //retrieve view only link of a particular file from bucket
+  viewImageFromMarket: async (fileID) => {
+    return await storage.getFilePreview(Server.bucketID, fileID);
+  },
+  createArt: async (name, description, price, fileID) => {
+    //firstly use the fileID to get the view only file url from the storage bucket
+    const fileURL = await api.viewImageFromMarket(fileID);
+    console.log(fileURL);
+    //pass in the parameters and the file URL to be saved in the collection
+    return await database.createDocument(
+      Server.databaseID,
+      Server.artcollectionID,
+      ID.unique(),
+      {
+        title: name,
+        description: description,
+        price: price,
+        fileId: fileURL,
+      }
+    );
+  },
+  deleteCurrentSession: async () => {
+    return await account.deleteSession("current");
   },
 
   eventslists: async () => {

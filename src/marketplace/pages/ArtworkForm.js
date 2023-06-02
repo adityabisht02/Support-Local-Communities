@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Client, Storage, Databases, ID } from "appwrite";
 import { Server } from "../utils/config";
+import api from "../../apis/apis";
 import Navigation from "./Navigation";
 function ArtworkForm() {
   const [formParams, updateFormParams] = useState({
@@ -10,68 +11,34 @@ function ArtworkForm() {
   });
 
   const [fileID, setFileID] = useState(null);
-  const [fileURL, setFileURL] = useState(null);
+
   async function handleSubmit(e) {
     e.preventDefault();
-    const client = new Client();
 
-    client
-      .setEndpoint(Server.endpoint) // Your API Endpoint
-      .setProject(Server.project); // Your project ID
-    const databases = new Databases(client);
-    const storage = new Storage(client);
-    //get the view url using the file id
-    const result = storage.getFilePreview(Server.bucketID, fileID);
-    console.log(result);
-    //store all data and file url in collection
-    const promise = databases.createDocument(
-      Server.databaseID,
-      Server.collectionID,
-      ID.unique(),
-      {
-        title: formParams.name,
-        description: formParams.description,
-        price: formParams.price,
-        fileId: result,
-      }
+    //send all form params and file ID to apis to make db entry
+    const dbresult = api.createArt(
+      formParams.name,
+      formParams.description,
+      formParams.price,
+      fileID
     );
-
-    promise.then(
-      function (response) {
-        console.log(response);
-      },
-      function (error) {
-        console.log(error);
-      }
-    );
+    console.log("Art uploaded!!");
   }
 
   async function onChangeFile(e) {
     const file = e.target.files[0];
     console.log(file.name);
+    const accountcurr = await api.getAccount();
+    console.log(accountcurr);
     //generate a unique file id
     const fileId =
       new Date().getTime() + "-" + Math.random().toString(36).substring(7);
     setFileID(fileId);
-    const client = new Client();
-
-    const storage = new Storage(client);
-
-    client
-      .setEndpoint(Server.endpoint) // Your API Endpoint
-      .setProject(Server.project); // Your project ID
 
     try {
-      const promise = storage.createFile(Server.bucketID, fileId, file);
-
-      promise.then(
-        function (response) {
-          console.log("file uploaded to bucket!!!");
-        },
-        function (error) {
-          console.log("The following error ", error); // Failure
-        }
-      );
+      //use api function to upload to storage bucket
+      const result = api.uploadImageToMarket(fileId, file);
+      console.log("file uploaded successfully");
     } catch (error) {
       console.log("Some error uloading file to bucket", error);
     }
