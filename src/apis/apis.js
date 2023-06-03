@@ -11,7 +11,7 @@ import {
 //import config credentials
 import { Server } from "../utils/config";
 
-const client = new Client();
+export const client = new Client();
 client.setEndpoint(Server.endpoint).setProject(Server.project);
 //creating account,database storage objs
 const account = new Account(client);
@@ -19,6 +19,7 @@ const database = new Databases(client);
 const storage = new Storage(client);
 const locale = new Locale(client);
 const functions = new Functions(client);
+
 
 let api = {
   createAccount: async (email, password, name) => {
@@ -133,6 +134,15 @@ let api = {
       Server.databaseID,
       Server.eventscollectionID,
       [Query.search("City", city), Query.orderAsc("Name")]
+    );
+  },
+
+  updateEvents:  (documentId,data) => {
+    return database.updateDocument(
+      Server.databaseID,
+      Server.eventscollectionID,
+      documentId,
+      data
     );
   },
 };

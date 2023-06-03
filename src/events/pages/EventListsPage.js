@@ -1,16 +1,56 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "../components/navigation/Navigation";
 import "./EventListsPage.css";
-import api from "../../apis/apis";
+import api, { client } from "../../apis/apis";
 
 const EventLists = () => {
   const [documents, setDocuments] = useState([]);
+
+  //REALTIME CREATION, UPDATION AND DELETION.
+
+  useEffect(() => {
+    const unsubscribe = client.subscribe("documents", (response) => {
+      if (
+        response.events.includes("databases.*.collections.*.documents.*.create")
+      ) {
+        console.info("New Document has been created!");
+        setDocuments((documents) => [...documents, response.payload]);
+      } else if (
+        response.events.includes("databases.*.collections.*.documents.*.update")
+      ) {
+        console.info("Document has been updated");
+        setDocuments((documents) =>
+          documents.map((doc) => {
+            if (doc.$id === response.payload.$id) {
+              return response.payload;
+            } else {
+              return doc;
+            }
+          })
+        );
+      } else if (
+        response.events.includes("databases.*.collections.*.documents.*.delete")
+      ) {
+        console.info("Document has been deleted!");
+        setDocuments((documents) =>
+          documents.filter((doc) => {
+            return doc.$id !== response.payload.$id;
+          })
+        );
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  // GETTING LIST OF EVENTS
 
   useEffect(() => {
     const listDocuments = async () => {
       try {
         const response = await api.eventslists();
-        console.log("List of documents:", response.documents);
+        // console.info("List of documents:", response.documents);
         setDocuments(response.documents);
       } catch (error) {
         console.error("Error retrieving documents:", error);
