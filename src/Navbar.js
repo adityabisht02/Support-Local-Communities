@@ -11,9 +11,9 @@ function Navbar() {
   return (
     <div className="py-1">
       <div className="container flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
-      <div className="flex items-center">
+        <div className="flex items-center">
           <img src={logo} alt="Logo" className="logo-image" />
-        <div className="text-xl font-bold">Support-Local</div>
+          <div className="text-xl font-bold">Support-Local</div>
         </div>
         <div className="hidden md:flex space-x-12 items-center">
           <Link to="/" className=" hover:text-blue-800 font-bold text-xl">
@@ -51,10 +51,10 @@ function Navbar() {
               Marketplace
             </Link>
             <div className="dropdown-content">
-              <Link className="font-semibold items-center" to="/marketplace">
+              <Link to="/marketplace">
                 Marketplace
               </Link>
-              <Link className="font-semibold items-center" to="/artworkform">
+              <Link to="/artworkform">
                 Submit Art
               </Link>
             </div>
