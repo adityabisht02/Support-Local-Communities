@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Navigation from "../components/navigation/Navigation";
 import "./EventPostPage.css";
 import api from "../../apis/apis";
 
@@ -23,7 +22,6 @@ const EventDetails = () => {
 
   return (
     <React.Fragment>
-      <Navigation />
       <div>
         {document ? (
           <div className="card">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navigation from "./Navigation";
 import api from "../../apis/apis";
 const DonationList = () => {
   const [donations, setDonations] = useState([]);
@@ -45,7 +44,6 @@ const DonationList = () => {
 
   return (
     <>
-      <Navigation />
       <div className="container mx-auto py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold">Donation List</h1>

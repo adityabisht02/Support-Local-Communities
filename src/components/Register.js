@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import api from "./apis/apis";
+import api from "../apis/apis";
 import { useNavigate } from "react-router-dom";
 function Register() {
   const [formParams, updateFormParams] = useState({

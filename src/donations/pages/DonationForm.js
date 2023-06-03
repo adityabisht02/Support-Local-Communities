@@ -7,7 +7,6 @@ import {
 } from "react-icons/ai";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { IoIosCreate } from "react-icons/io";
-import Navigation from "./Navigation";
 import Confetti from "react-confetti";
 import api from "../../apis/apis";
 
@@ -66,7 +65,6 @@ const DonationForm = () => {
 
   return (
     <React.Fragment>
-      <Navigation />
       <div className="bg-gradient-to-b from-white-500 to-white-800 py-10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-10">

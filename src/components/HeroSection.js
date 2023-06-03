@@ -1,15 +1,15 @@
 import React from "react";
 import './HeroSection.css';
 import { Link } from "react-router-dom";
-import Airport from './assets/airport.png';
-import Tree from './assets/tree.gif';
-import Route from './assets/route.gif';
-import Event from './assets/event.png';
-import Donation from './assets/donation.png';
-import Waves from './assets/waves.gif';
-import Parachute from './assets/parachute.gif';
-import MarketPlace from './assets/marketplace.png';
-import Aeroplane from './assets/aeroplane.png';
+import Airport from '../assets/airport.png';
+import Tree from '../assets/tree.gif';
+import Route from '../assets/route.gif';
+import Event from '../assets/event.png';
+import Donation from '../assets/donation.png';
+import Waves from '../assets/waves.gif';
+import Parachute from '../assets/parachute.gif';
+import MarketPlace from '../assets/marketplace.png';
+import Aeroplane from '../assets/aeroplane.png';
 
 function HeroSection() {
   return (

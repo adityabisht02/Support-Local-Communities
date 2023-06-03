@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/navigation/Navigation";
 import "./EventListsPage.css";
 import api from "../../apis/apis";
 
@@ -22,7 +21,6 @@ const GetEvents = () => {
   if (documents.length > 0) {
     return (
       <React.Fragment>
-        <Navigation />
         <section className="cards">
           {documents.map((document) => (
             <div className="card">
@@ -45,7 +43,6 @@ const GetEvents = () => {
   } else {
     return (
       <React.Fragment>
-        <Navigation />
         <p>No events in your areas</p>
       </React.Fragment>
     );

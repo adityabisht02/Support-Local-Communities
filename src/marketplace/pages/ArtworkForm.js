@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Client, Storage, Databases, ID } from "appwrite";
 import { Server } from "../utils/config";
 import api from "../../apis/apis";
-import Navigation from "./Navigation";
 function ArtworkForm() {
   const [formParams, updateFormParams] = useState({
     name: "",
@@ -46,7 +45,6 @@ function ArtworkForm() {
 
   return (
     <React.Fragment>
-      <Navigation />
       <div className="">
         <div className="flex flex-col place-items-center mt-10" id="nftForm">
           <form

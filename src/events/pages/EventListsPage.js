@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/navigation/Navigation";
 import "./EventListsPage.css";
 import api, { client } from "../../apis/apis";
 
@@ -63,7 +62,6 @@ const EventLists = () => {
   if (documents) {
     return (
       <React.Fragment>
-        <Navigation />
         <section className="cards">
           {documents.map((document) => (
             <div className="card">
@@ -86,7 +84,6 @@ const EventLists = () => {
   } else {
     return (
       <React.Fragment>
-        <Navigation />
         <div>
           <p>Loading...</p>
         </div>

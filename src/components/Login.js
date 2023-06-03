@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "./apis/apis";
+import api from "../apis/apis";
 function Login() {
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
   const [formParams, updateFormParams] = useState({

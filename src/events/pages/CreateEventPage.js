@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navigation from "../components/navigation/Navigation";
 import "./CreateEventPage.css";
 import api from "../../apis/apis";
 
@@ -41,7 +40,6 @@ const CreateEvent = () => {
 
   return (
     <React.Fragment>
-      <Navigation />
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="row">

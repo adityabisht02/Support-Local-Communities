@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
-import Navigation from "./Navigation";
 import api from "../../apis/apis";
 
 const DonationPost = () => {
@@ -96,7 +95,6 @@ const DonationPost = () => {
 
   return (
     <>
-      <Navigation />
       <div className="container mx-auto px-4">
         <div className="donationPost">
           <div className="donation-list">
