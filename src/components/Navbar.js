@@ -27,6 +27,7 @@ function Navbar() {
             <div className="dropdown-content">
               <Link to="/events">Events</Link>
               <Link to="/createEvent">Create event</Link>
+              <Link to="/getEvents">Events Near Me</Link>
             </div>
           </div>
 
@@ -38,9 +39,8 @@ function Navbar() {
               Donations
             </Link>
             <div className="dropdown-content">
-              <Link to="/createDonation">Create fundraiser</Link>
-
               <Link to="/donations">Donations</Link>
+              <Link to="/createDonation">Create fundraiser</Link>
             </div>
           </div>
           <div className="dropdown">
@@ -51,12 +51,8 @@ function Navbar() {
               Marketplace
             </Link>
             <div className="dropdown-content">
-              <Link to="/marketplace">
-                Marketplace
-              </Link>
-              <Link to="/artworkform">
-                Submit Art
-              </Link>
+              <Link to="/marketplace">Marketplace</Link>
+              <Link to="/artworkform">Submit Art</Link>
             </div>
           </div>
 
