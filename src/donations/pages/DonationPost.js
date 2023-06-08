@@ -107,7 +107,6 @@ const DonationPost = () => {
                 {donation.title}
               </p>
             </div>
-
             <div className="donation-card flex flex-wrap">
               <div className="donation-card-description w-full lg:w-1/2">
                 <p className="mt-4">{donation.content}</p>
@@ -124,7 +123,7 @@ const DonationPost = () => {
                               (Math.floor(Math.random() * donation.amount) %
                                 donation.amount)) /
                               donation.amount) *
-                              100
+                            100
                           )}%`,
                         }}
                       ></div>
@@ -165,7 +164,7 @@ const DonationPost = () => {
                   </a>
                   <br />
                   <small>Posted at: {donation.date}</small>
-                  <br/>
+                  <br />
                   <Link
                     to="/donations"
                     className="payment-link"
@@ -179,7 +178,7 @@ const DonationPost = () => {
                   </Link>
                 </div>
               </div>
-              
+
               <div className="donation-card-image w-full lg:w-1/2">
                 <img src={donation.image} alt="donation-images" />
               </div>

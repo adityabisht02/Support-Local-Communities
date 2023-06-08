@@ -1,8 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaPinterest } from "react-icons/fa";
+import { ThemeContext } from "../ThemeContext";
+import { FaHeart } from "react-icons/fa";
+import './Footer.css';
 
 const Footer = () => {
+  const { theme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   return (
+    <div className={`navbar ${navbarCSS}`}>
     <footer className="bg-gray-900 text-white py-6">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
@@ -90,10 +96,13 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <p className="text-center mt-6 text-sm">
+      <p className="text-4xl text-center mt-6 text-bold text-lg font-bold">
         © 2023 Support Local Communities. All rights reserved.
+        <br/>
+        <pre className="text-4xl"> Made with <span class="sparkling-heart">&#10084;</span> using React JS, Appwrite and Tailwind CSS</pre>
       </p>
     </footer>
+    </div>
   );
 };
 

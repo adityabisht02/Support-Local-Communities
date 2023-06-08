@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../index.css";
 import NFTCard from "./NFTCard";
 import { Client, Databases, Storage } from "appwrite";
 import { Server } from "../utils/config";
 import img from "./painting.jpg";
+import { ThemeContext } from "../../ThemeContext";
+import '../../components/Navbar.css';
+
 function PaintingMarketplace() {
+  const { theme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const [data, setData] = useState([]);
   useEffect(() => {
     async function getAllArt() {
@@ -61,10 +66,12 @@ function PaintingMarketplace() {
   ];
   return (
     <React.Fragment>
-      <div className="grid grid-cols-3">
-        {data.map((value, index) => {
-          return <NFTCard data={value} key={index} />;
-        })}
+      <div className={`navbar ${navbarCSS}`}>
+        <div className="grid grid-cols-3">
+          {data.map((value, index) => {
+            return <NFTCard data={value} key={index} />;
+          })}
+        </div>
       </div>
     </React.Fragment>
   );

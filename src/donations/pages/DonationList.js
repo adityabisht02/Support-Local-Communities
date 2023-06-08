@@ -86,7 +86,7 @@ const DonationList = () => {
                   alt="donation-images"
                   className="w-full h-40 object-cover mb-4 rounded"
                 />
-                <h2 className="text-xl font-bold text-center">
+                <h2 className="text-xl font-bold text-center text-black">
                   {donation.title}
                 </h2>
                 <p className="mt-2 text-gray-600">{donation.content}</p>
