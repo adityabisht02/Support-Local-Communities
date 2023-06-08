@@ -6,9 +6,9 @@ import './Footer.css';
 
 const Footer = () => {
   const { theme } = useContext(ThemeContext);
-  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
+  const footerCSS = theme === "dark" ? "footer-dark" : "";
   return (
-    <div className={`navbar ${navbarCSS}`}>
+    <div className={`footer ${footerCSS}`}>
     <footer className="bg-gray-900 text-white py-6">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
