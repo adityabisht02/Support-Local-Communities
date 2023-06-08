@@ -122,7 +122,6 @@ const Footer = () => {
         </p>
         <div className="confetti-container">
           {showConfetti && <Confetti />}
-          {isSubscribed && <Confetti />}
           {isSubscribed && (
             <Confetti />
           )}
