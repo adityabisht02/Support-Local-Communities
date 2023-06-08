@@ -32,6 +32,94 @@
 }
 
 .logo-image {
-  width: 100px; 
+  width: 100px;
   height: auto;
+}
+
+/* dark theme */
+.navbar {
+  animation: slide-down 0.5s ease forwards;
+}
+
+.navbar-dark {
+  background-color: #1a202c;
+  color: white;
+}
+
+.navbar-dark .dropdown-content {
+  background-color: #1a202c;
+}
+
+.navbar-dark .dropdown-content a {
+  color: white;
+}
+
+.navbar-dark .dropdown-content a:hover {
+  background-color: #233a63;
+}
+
+.theme-toggle-btn {
+  background: relative;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  width: 60px;
+  height: 30px;
+  padding: 0;
+  border-radius: 27px;
+  background-color: grey;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+}
+
+.theme-toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode .theme-toggle-btn {
+  background-color: grey;
+}
+
+.dark-mode .theme-toggle-slider {
+  transform: translateX(30px);
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-icon svg {
+  color: #ffdb4d;
+  text-shadow: 0 0 10px rgba(255, 219, 77, 0.8);
+  transition: transform 0.3s ease;
+}
+
+.dark-mode .theme-toggle-icon {
+  transform: translate(-50%, -50%) rotate(180deg);
+  color: #fff;
+}
+
+.theme-toggle-btn:hover .theme-toggle-icon {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }

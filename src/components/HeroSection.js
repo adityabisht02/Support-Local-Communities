@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import './HeroSection.css';
 import { Link } from "react-router-dom";
 import Airport from '../assets/airport.png';
@@ -10,10 +10,14 @@ import Waves from '../assets/waves.gif';
 import Parachute from '../assets/parachute.gif';
 import MarketPlace from '../assets/marketplace.png';
 import Aeroplane from '../assets/aeroplane.png';
+import { ThemeContext } from "../ThemeContext";
 
 function HeroSection() {
+  const {theme} = useContext(ThemeContext);
+  const heroSectionCSS = theme === 'dark' ? 'hero-section-dark' : 'hero-section';
   return (
     <>
+   <div className={heroSectionCSS}>
      <div className="aeroplane-animation">
         <img src={Aeroplane} alt="aeroplane" className="aeroplane" />
       </div>
@@ -40,13 +44,13 @@ function HeroSection() {
         </div>
         <div className="flex flex-col items-center right shadow-lg">
           <img src={Event} alt="event" />
-          <h3 className="text-2xl text-black">Events</h3>
+          <h3 className="text-2xl">Events</h3>
           <p className="text-purple-300">Discover and join local events happening in your community.</p>
           <Link to="/events" className="btn-primary">Explore Events</Link>
         </div>
         <div className="flex flex-col items-center left shadow-lg">
           <img src={Donation} alt="donation" />
-          <h3 className="text-2xl text-black">Donation</h3>
+          <h3 className="text-2xl">Donation</h3>
           <p className="text-purple-300">Support local charities and make a difference in your community.</p>
           <Link to="/donations" className="btn-primary">Donate Now</Link>
         </div>
@@ -58,13 +62,14 @@ function HeroSection() {
         </div>
         <div className="flex flex-col items-center right shadow-lg">
           <img src={MarketPlace} alt="marketplace" />
-          <h3 className="text-2xl text-black">Art</h3>
+          <h3 className="text-2xl">Art</h3>
           <p className="text-purple-300">Showcasing local artists and their incredible creations.</p>
           <Link to="/marketplace" className="btn-primary">Explore Art</Link>
         </div>
       </div>
       <div className="aeroplane-animation">
         <img src={Aeroplane} alt="aeroplane" className="aeroplane" />
+      </div>
       </div>
     </>
   );

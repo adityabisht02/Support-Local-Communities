@@ -23,9 +23,12 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Footer from "./components/Footer";
 import "./components/Home.css";
+import { ThemeContextProvider } from "./ThemeContext";
 
 const App = () => {
   return (
+    <ThemeContextProvider>
+    <div>
     <Router>
       <Navbar />
       <main>
@@ -42,7 +45,7 @@ const App = () => {
           <Route path="/createDonation" element={<DonationForm />} exact />
           <Route path="/donations" element={<DonationList />} exact />
           <Route path="/donations/:postId" element={<DonationPost />} exact />
-
+          
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
@@ -50,6 +53,8 @@ const App = () => {
         <Footer />
       </div>
     </Router>
+    </div>
+    </ThemeContextProvider>
   );
 };
 
