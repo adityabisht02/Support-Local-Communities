@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import api from "../../apis/apis";
+import { ThemeContext } from "../../ThemeContext";
+import '../../components/Navbar.css';
+
 const DonationList = () => {
+  const { theme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const [donations, setDonations] = useState([]);
   const [locationFilter, setLocationFilter] = useState("all");
   const [filteredDonations, setFilteredDonations] = useState([]);
@@ -43,7 +48,7 @@ const DonationList = () => {
   };
 
   return (
-    <>
+    <div className={`${navbarCSS}`}>
       <div className="container mx-auto py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold">Donation List</h1>
@@ -58,7 +63,7 @@ const DonationList = () => {
           <select
             value={locationFilter}
             onChange={(e) => setLocationFilter(e.target.value)}
-            className="py-2 px-4 border border-gray-300 rounded"
+            className="py-2 px-4 border border-gray-300 rounded text-black"
           >
             <option value="all">All</option>
             {uniqueLocations.map((location) => (
@@ -87,7 +92,7 @@ const DonationList = () => {
                 <p className="mt-2 text-gray-600">{donation.content}</p>
                 <hr className="my-4" />
                 <div>
-                  <div className="donation-detail">
+                  <div className="donation-detail text-black">
                     <h3 className="font-bold">Target Amount:</h3>
                     <p>${donation.amount}</p>
                     <div className="w-full bg-gray-200 h-3 rounded-full mt-2">
@@ -105,6 +110,7 @@ const DonationList = () => {
                       ></div>
                     </div>
                   </div>
+                  <div className="text-black">
                   <p>
                     Email:{" "}
                     <u>
@@ -113,6 +119,7 @@ const DonationList = () => {
                   </p>
                   <p>Phone: {donation.phone}</p>
                   <p>Location: {donation.location}</p>
+                  </div>
                 </div>
                 <div className="text-center mt-4">
                   <a
@@ -135,7 +142,7 @@ const DonationList = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

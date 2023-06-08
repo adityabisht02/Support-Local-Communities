@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   AiOutlineMail,
   AiOutlinePhone,
@@ -9,6 +9,7 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import { IoIosCreate } from "react-icons/io";
 import Confetti from "react-confetti";
 import api from "../../apis/apis";
+import { ThemeContext } from "../../ThemeContext";
 
 const DonationForm = () => {
   const [title, setTitle] = useState("");
@@ -23,6 +24,8 @@ const DonationForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isError, setIsError] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -64,6 +67,7 @@ const DonationForm = () => {
   };
 
   return (
+    <div className={`navbar ${navbarCSS}`}>
     <React.Fragment>
       <div className="bg-gradient-to-b from-white-500 to-white-800 py-10">
         <div className="container mx-auto px-4">
@@ -105,7 +109,7 @@ const DonationForm = () => {
                   id="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-black"
                 />
               </div>
               <div className="mb-4">
@@ -120,7 +124,7 @@ const DonationForm = () => {
                   id="content"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  className="w-full h-32 bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="w-full h-32 bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-black"
                 />
               </div>
               <div className="mb-4">
@@ -136,7 +140,7 @@ const DonationForm = () => {
                   id="amount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-black"
                 />
               </div>
               <div className="mb-4">
@@ -152,7 +156,7 @@ const DonationForm = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-black"
                 />
               </div>
               <div className="mb-4">
@@ -168,7 +172,7 @@ const DonationForm = () => {
                   id="phone"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-black"
                 />
               </div>
               <div className="mb-4">
@@ -184,7 +188,7 @@ const DonationForm = () => {
                   id="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-black"
                 />
               </div>
               <div className="mb-4">
@@ -200,7 +204,7 @@ const DonationForm = () => {
                   id="location"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-black"
                 />
               </div>
               <div className="mb-4">
@@ -216,7 +220,7 @@ const DonationForm = () => {
                   id="image"
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
-                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  className="w-full bg-gray-200 border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-black"
                 />
               </div>
               {image && (
@@ -249,6 +253,7 @@ const DonationForm = () => {
         </div>
       </div>
     </React.Fragment>
+    </div>
   );
 };
 
