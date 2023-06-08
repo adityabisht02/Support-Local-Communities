@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Client, Storage, Databases, ID } from "appwrite";
 import { Server } from "../utils/config";
 import api from "../../apis/apis";
+import { ThemeContext } from "../../ThemeContext";
+import '../../components/Navbar.css';
+
 function ArtworkForm() {
+  const { theme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const [formParams, updateFormParams] = useState({
     name: "",
     description: "",
@@ -45,10 +50,10 @@ function ArtworkForm() {
 
   return (
     <React.Fragment>
-      <div className="">
+     <div className={`navbar ${navbarCSS}`}>
         <div className="flex flex-col place-items-center mt-10" id="nftForm">
           <form
-            className="bg-white shadow-md rounded px-8 pt-4 pb-8 mb-4"
+            className="bg-white shadow-md rounded px-8 pt-4 pb-8 mb-4 text-black"
             onSubmit={handleSubmit}
           >
             <h3 className="text-center font-bold mb-8">Submit your Artwork</h3>

@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import api from "../../apis/apis";
+import { ThemeContext } from "../../ThemeContext";
+import '../../components/Navbar.css';
 
 const DonationPost = () => {
+  const { theme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const { postId } = useParams();
   const [donation, setDonation] = useState(null);
   const [comments, setComments] = useState([]);
@@ -94,7 +98,7 @@ const DonationPost = () => {
   };
 
   return (
-    <>
+    <div className={`navbar ${navbarCSS}`}>
       <div className="container mx-auto px-4">
         <div className="donationPost">
           <div className="donation-list">
@@ -103,14 +107,13 @@ const DonationPost = () => {
                 {donation.title}
               </p>
             </div>
-
             <div className="donation-card flex flex-wrap">
               <div className="donation-card-description w-full lg:w-1/2">
                 <p className="mt-4">{donation.content}</p>
                 <div className="donation-details mt-6">
                   <div className="donation-detail">
                     <h3 className="font-bold">Target Amount:</h3>
-                    <p>${donation.amount}</p>
+                    <p className="">${donation.amount}</p>
                     <div className="w-full bg-gray-200 h-3 rounded-full mt-2">
                       <div
                         className="bg-blue-500 h-full rounded-full"
@@ -120,7 +123,7 @@ const DonationPost = () => {
                               (Math.floor(Math.random() * donation.amount) %
                                 donation.amount)) /
                               donation.amount) *
-                              100
+                            100
                           )}%`,
                         }}
                       ></div>
@@ -129,7 +132,7 @@ const DonationPost = () => {
 
                   <div className="donation-detail">
                     <h3 className="font-bold">Email:</h3>
-                    <p>
+                    <p >
                       <u>
                         <a href={`mailto:${donation.email}`}>
                           {donation.email}
@@ -139,11 +142,11 @@ const DonationPost = () => {
                   </div>
                   <div className="donation-detail">
                     <h3 className="font-bold">Phone:</h3>
-                    <p>{donation.phone}</p>
+                    <p >{donation.phone}</p>
                   </div>
                   <div className="donation-detail">
                     <h3 className="font-bold">Location:</h3>
-                    <p>{donation.location}</p>
+                    <p >{donation.location}</p>
                   </div>
                 </div>
 
@@ -161,8 +164,21 @@ const DonationPost = () => {
                   </a>
                   <br />
                   <small>Posted at: {donation.date}</small>
+                  <br />
+                  <Link
+                    to="/donations"
+                    className="payment-link"
+                  >
+                    <button
+                      className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                      type="submit"
+                    >
+                      Go Back
+                    </button>
+                  </Link>
                 </div>
               </div>
+
               <div className="donation-card-image w-full lg:w-1/2">
                 <img src={donation.image} alt="donation-images" />
               </div>
@@ -170,7 +186,7 @@ const DonationPost = () => {
 
             <hr className="mt-8" />
             <div className="share-buttons mt-8">
-              <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">
+              <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center text-black">
                 Share this post
               </p>
               <div className="social-icons mt-4">
@@ -194,7 +210,7 @@ const DonationPost = () => {
             <hr className="mt-8" />
             <div className="comments mt-8">
               <div className="comment-box">
-                <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center">
+                <p className="text-4xl font-bold text-blue-700 mb-8 flex items-center justify-center text-black">
                   Comments
                 </p>
                 <div className="comment">
@@ -207,12 +223,12 @@ const DonationPost = () => {
                 </div>
 
                 <div className="comment-form mt-4">
-                  <p className="text-2xl font-bold text-blue-700 mb-8 flex items-center justify-center">
+                  <p className="text-2xl font-bold text-blue-700 mb-8 flex items-center justify-center text-black">
                     Add a comment
                   </p>
                   <form onSubmit={submitComment}>
                     <textarea
-                      className="w-full p-2 rounded"
+                      className="w-full p-2 rounded text-black"
                       placeholder="Comment"
                       name="comment"
                       required
@@ -230,7 +246,7 @@ const DonationPost = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

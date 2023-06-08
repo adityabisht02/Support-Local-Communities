@@ -26,7 +26,7 @@ function Login() {
         setUserLoggedIn(result);
       }
     } catch (e) {
-      alert("failed");
+      alert("Login failed");
       console.log(e);
     }
   }
