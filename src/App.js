@@ -24,6 +24,10 @@ import "./App.css";
 import Footer from "./components/Footer";
 import "./components/Home.css";
 import { ThemeContextProvider } from "./ThemeContext";
+import AboutUs from "./components/AboutUs";
+import TermsOfService from "./components/TermsOfService";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import ContactUs from "./components/ContactUs";
 
 const App = () => {
   return (
@@ -45,13 +49,14 @@ const App = () => {
           <Route path="/createDonation" element={<DonationForm />} exact />
           <Route path="/donations" element={<DonationList />} exact />
           <Route path="/donations/:postId" element={<DonationPost />} exact />
-          
+          <Route path="/aboutUs" element={<AboutUs/>} exact/>
+          <Route path="/termsOfService" element={<TermsOfService/>} exact/>
+          <Route path="/privacyPolicy" element={<PrivacyPolicy/>} exact/>
+          <Route path="/contactUs" element={<ContactUs/>} exact/>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <div className="footer-home">
         <Footer />
-      </div>
     </Router>
     </div>
     </ThemeContextProvider>

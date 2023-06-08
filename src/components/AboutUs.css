@@ -1,0 +1,133 @@
+.about-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .logo {
+    width: 50px;
+    height: auto;
+    margin-right: 1rem;
+  }
+  
+  .content {
+    max-width: 800px;
+    text-align: center;
+    
+  }
+  
+  .card {
+    margin-bottom: 2rem;
+  }
+  
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    padding: 2rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #667eea;
+  }
+  .icon:hover{
+    color: #f56565;
+  }
+  .team-section {
+    margin-bottom: 2rem;
+  }
+  
+  .team-members {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    padding: 2rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .team-member:hover {
+    transform: scale(1.05);
+  }
+  
+  .team-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .social-icon {
+    font-size: 2.5rem;
+    color: #667eea;
+  }
+  .social-icon :hover{
+    color: #f56565;
+  }
+  .text-2xl {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .text-3xl {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .feature-card,
+    .team-member {
+      width: 100%;
+    }
+  }
+  .text-blue{
+    color: blue;
+  }

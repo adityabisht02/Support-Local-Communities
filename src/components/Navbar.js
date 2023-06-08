@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../assets/logo.png";
 import { ThemeContext } from "../ThemeContext";
-import { FaSun, FaMoon } from "react-icons/fa";
+import Sun from '../assets/sun.gif';
+import Moon from '../assets/nightTheme/moon.gif';
 
 function Navbar() {
   const [account, setAccount] = useState("");
@@ -69,10 +70,21 @@ function Navbar() {
                 <Link to="/artworkform">Submit Art</Link>
               </div>
             </div>
-            <button className="theme-toggle-btn" onClick={toggleTheme}>
+            {theme === "light" ? (
+                  <>
+                    <img src={Sun} className="sun-icon" alt="sun"/>
+                    <span className="sr-only">Light mode</span>
+                  </>
+                ) : (
+                  <>
+                    <img src={Moon} className="moon-icon" alt="moon"/>
+                    <span className="sr-only">Dark mode</span>
+                  </>
+                )}
+             <button className="theme-toggle-btn" onClick={toggleTheme}>
               <div className="theme-toggle-slider" />
               <div className="theme-toggle-icon">
-                {theme === "light" ? <FaSun className="sun" /> : <FaMoon className="moon" />}
+                
               </div>
             </button>
             {/* logout the user */}

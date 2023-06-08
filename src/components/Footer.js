@@ -3,6 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaPinterest 
 import { ThemeContext } from "../ThemeContext";
 import { FaHeart } from "react-icons/fa";
 import './Footer.css';
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { theme } = useContext(ThemeContext);
@@ -83,16 +84,16 @@ const Footer = () => {
       <div className="container mx-auto mt-6">
         <ul className="flex justify-center space-x-6">
           <li>
-            <a href="/">About Us</a>
+            <Link to="/aboutUs">About Us</Link>
           </li>
           <li>
-            <a href="/">Terms of Service</a>
+            <Link to="/termsOfService">Terms of Service</Link>
           </li>
           <li>
-            <a href="/">Privacy Policy</a>
+            <Link to="/privacyPolicy">Privacy Policy</Link>
           </li>
           <li>
-            <a href="/">Contact</a>
+            <Link to="/contactUs">Contact</Link>
           </li>
         </ul>
       </div>
