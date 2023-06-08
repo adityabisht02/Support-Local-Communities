@@ -14,12 +14,21 @@ function Login() {
     }
   }, [isUserLoggedIn]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    const result = api.createSession(formParams.email, formParams.password);
-    console.log(result);
-    setUserLoggedIn(result);
+    try {
+      const result = await api.createSession(
+        formParams.email,
+        formParams.password
+      );
+      if (result) {
+        setUserLoggedIn(result);
+      }
+    } catch (e) {
+      alert("Login failed");
+      console.log(e);
+    }
   }
 
   return (

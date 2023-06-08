@@ -20,7 +20,6 @@ const storage = new Storage(client);
 const locale = new Locale(client);
 const functions = new Functions(client);
 
-
 let api = {
   createAccount: async (email, password, name) => {
     return await account.create(ID.unique(), email, password, name);
@@ -56,6 +55,13 @@ let api = {
         price: price,
         fileId: fileURL,
       }
+    );
+  },
+  viewAllArt: async () => {
+    return await database.listDocuments(
+      Server.databaseID,
+      Server.artcollectionID,
+      []
     );
   },
   deleteCurrentSession: async () => {
@@ -137,7 +143,7 @@ let api = {
     );
   },
 
-  updateEvents:  (documentId,data) => {
+  updateEvents: (documentId, data) => {
     return database.updateDocument(
       Server.databaseID,
       Server.eventscollectionID,
