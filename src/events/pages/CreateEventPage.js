@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./CreateEventPage.css";
 import api from "../../apis/apis";
+import { ThemeContext } from "../../ThemeContext";
+import '../../components/Navbar.css';
 
 const CreateEvent = () => {
+  const { theme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const [Name, setName] = useState("");
   const [Description, setDescription] = useState("");
   const [City, setCity] = useState("");
@@ -40,117 +44,127 @@ const CreateEvent = () => {
 
   return (
     <React.Fragment>
-      <div className="container">
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-25">
-              <label>Event Name</label>
+      <div className={`navbar ${navbarCSS}`}>
+        <div className="container">
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-25">
+                <label>Event Name</label>
+              </div>
+              <div className="col-75 text-black">
+                <input
+                  type="text"
+                  value={Name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Event name.."
+                />
+              </div>
             </div>
-            <div className="col-75">
-              <input
-                type="text"
-                value={Name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Event name.."
-              />
+            <div className="row">
+              <div className="col-25">
+                <label>Event Description</label>
+              </div>
+              <div className="col-75">
+                <textarea
+                  className="text-black"
+                  type="text"
+                  value={Description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="  Write something about event.."
+                />
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-25">
-              <label>Event Description</label>
+            <div className="row">
+              <div className="col-25">
+                <label>City</label>
+              </div>
+              <div className="col-75">
+                <input
+                  className="text-black"
+                  type="text"
+                  value={City}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </div>
             </div>
-            <div className="col-75">
-              <textarea
-                type="text"
-                value={Description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="  Write something about event.."
-              />
+            <div className="row">
+              <div className="col-25">
+                <label>Region</label>
+              </div>
+              <div className="col-75">
+                <input
+                  className="text-black"
+                  type="text"
+                  value={Region}
+                  onChange={(e) => setRegion(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-25">
-              <label>City</label>
+            <div className="row">
+              <div className="col-25">
+                <label>Address</label>
+              </div>
+              <div className="col-75">
+                <input
+                  className="text-black"
+                  type="text"
+                  value={Address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </div>
             </div>
-            <div className="col-75">
-              <input
-                type="text"
-                value={City}
-                onChange={(e) => setCity(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-25">
-              <label>Region</label>
-            </div>
-            <div className="col-75">
-              <input
-                type="text"
-                value={Region}
-                onChange={(e) => setRegion(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-25">
-              <label>Address</label>
-            </div>
-            <div className="col-75">
-              <input
-                type="text"
-                value={Address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-          </div>
 
-          <div className="row">
-            <div className="col-25">
-              <label>Organizers</label>
+            <div className="row">
+              <div className="col-25">
+                <label>Organizers</label>
+              </div>
+              <div className="col-75">
+                <input
+                  className="text-black"
+                  type="text"
+                  value={Organizers}
+                  onChange={(e) => setOrganizers(e.target.value)}
+                />
+              </div>
             </div>
-            <div className="col-75">
-              <input
-                type="text"
-                value={Organizers}
-                onChange={(e) => setOrganizers(e.target.value)}
-              />
+            <div className="row">
+              <div className="col-25">
+                <label>Timeline</label>
+              </div>
+              <div className="col-75">
+                <input
+                  className="text-black"
+                  type="datetime-local"
+                  value={StartTime}
+                  onChange={(e) => setStartTime(e.target.value)}
+                />
+                <br />
+                <input
+                  className="text-black"
+                  type="datetime-local"
+                  value={EndTime}
+                  onChange={(e) => setEndTime(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-25">
-              <label>Timeline</label>
+            <div className="row">
+              <div className="col-25">
+                <label>Image</label>
+              </div>
+              <div className="col-75">
+                <input
+                  className="text-black"
+                  type="text"
+                  value={Images}
+                  onChange={(e) => setImage(e.target.value)}
+                />
+              </div>
             </div>
-            <div className="col-75">
-              <input
-                type="datetime-local"
-                value={StartTime}
-                onChange={(e) => setStartTime(e.target.value)}
-              />
-              <br />
-              <input
-                type="datetime-local"
-                value={EndTime}
-                onChange={(e) => setEndTime(e.target.value)}
-              />
+            <div className="center">
+              <input type="submit" value="Submit" />
             </div>
-          </div>
-          <div className="row">
-            <div className="col-25">
-              <label>Image</label>
-            </div>
-            <div className="col-75">
-              <input
-                type="text"
-                value={Images}
-                onChange={(e) => setImage(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="center">
-            <input type="submit" value="Submit" />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </React.Fragment>
   );

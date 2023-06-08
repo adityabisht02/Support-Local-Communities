@@ -98,7 +98,7 @@ const DonationPost = () => {
   };
 
   return (
-      <div className={`navbar ${navbarCSS}`}>
+    <div className={`navbar ${navbarCSS}`}>
       <div className="container mx-auto px-4">
         <div className="donationPost">
           <div className="donation-list">

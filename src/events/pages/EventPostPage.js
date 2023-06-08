@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./EventPostPage.css";
 import api from "../../apis/apis";
+import { ThemeContext } from "../../ThemeContext";
+import '../../components/Navbar.css';
 
 const EventDetails = () => {
+  const { theme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const { id } = useParams();
 
   const [document, setDocument] = useState(null);
@@ -22,13 +26,13 @@ const EventDetails = () => {
 
   return (
     <React.Fragment>
-      <div>
+      <div className={`navbar ${navbarCSS}`}>
         {document ? (
           <div className="card">
             <img src={document.Images} alt="events-image" />
-            <h1>
+            <p className="text-4xl font-bold text-black">
               <strong>{document.Name}</strong>
-            </h1>
+            </p>
             <p className="price">
               {document.Region}, {document.City}, {document.Address}
             </p>
@@ -37,7 +41,7 @@ const EventDetails = () => {
             </p>
             <p className="price">From - {document.StartTime}</p>
             <p className="price">To - {document.EndTime}</p>
-            <p>{document.Description}</p>
+            <p className="text-black">{document.Description}</p>
           </div>
         ) : (
           <p>Loading...</p>
