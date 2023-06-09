@@ -44,6 +44,7 @@
 .navbar-dark {
   background-color: #1a202c;
   color: white;
+  padding: 10px;
 }
 
 .navbar-dark .dropdown-content {
