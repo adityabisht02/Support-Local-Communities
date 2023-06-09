@@ -45,7 +45,8 @@ const DonationForm = () => {
       const response = api.createDonationPost(data);
       console.log(response);
 
-      if (response.$id) {
+      if ((await response).$collectionId) {
+        alert("Donation post created successfully!");
         setIsSubmitted(true);
         setTitle("");
         setContent("");
@@ -67,14 +68,14 @@ const DonationForm = () => {
   };
 
   return (
-    <div className={`navbar ${navbarCSS}`}>
-      <React.Fragment>
+    <React.Fragment>
+      <div className={`navbar ${navbarCSS}`}>
         <div className="bg-gradient-to-b from-white-500 to-white-800 py-10">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-10">
               {isSubmitted && (
-                <div className="mb-4">
-                  <Confetti width={400} height={200} />
+                <div className="confetti-container mb-4">
+                  <Confetti width={1080} height={1080}/>
                   <p className="text-lg text-green-700 font-semibold">
                     Donation post created successfully!
                   </p>
@@ -252,8 +253,8 @@ const DonationForm = () => {
             </div>
           </div>
         </div>
-      </React.Fragment>
-    </div>
+      </div>
+    </React.Fragment>
   );
 };
 
