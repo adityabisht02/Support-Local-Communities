@@ -17,6 +17,12 @@ function Navbar() {
     //remove loginstatus
     localStorage.removeItem("loginStatus");
   }
+  async function getCurrentUserDetails() {
+    if (localStorage.getItem("loginStatus")) {
+      let result = await api.getAccount();
+      return result;
+    }
+  }
 
   useEffect(() => {
     const body = document.body;
