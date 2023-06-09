@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../index.css";
 import NFTCard from "./NFTCard";
 import img from "./painting.jpg";
+import api from "../../apis/apis";
 import { ThemeContext } from "../../ThemeContext";
 import "../../components/Navbar.css";
 

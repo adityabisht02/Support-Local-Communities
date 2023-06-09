@@ -6,11 +6,17 @@ import "./Navbar.css";
 import logo from "../assets/logo.png";
 import { ThemeContext } from "../ThemeContext";
 import { FaSun, FaMoon } from "react-icons/fa";
+import api from "../apis/apis";
 
 function Navbar() {
-  const [account, setAccount] = useState("");
   const { theme, toggleTheme } = useContext(ThemeContext);
   const navbarCSS = theme === "dark" ? "navbar-dark" : "";
+  async function logoutUser() {
+    //remove appwrite session
+    let result = api.deleteCurrentSession();
+    //remove loginstatus
+    localStorage.removeItem("loginStatus");
+  }
 
   useEffect(() => {
     const body = document.body;
@@ -72,11 +78,18 @@ function Navbar() {
             <button className="theme-toggle-btn" onClick={toggleTheme}>
               <div className="theme-toggle-slider" />
               <div className="theme-toggle-icon">
-                {theme === "light" ? <FaSun className="sun" /> : <FaMoon className="moon" />}
+                {theme === "light" ? (
+                  <FaSun className="sun" />
+                ) : (
+                  <FaMoon className="moon" />
+                )}
               </div>
             </button>
             {/* logout the user */}
-            <button className="px-6 py-2  bg-blue-900 hover:bg-blue-700 font-bold text-white text-xl">
+            <button
+              className="px-6 py-2  bg-blue-900 hover:bg-blue-700 font-bold text-white text-xl"
+              onClick={logoutUser}
+            >
               Logout
             </button>
           </div>
