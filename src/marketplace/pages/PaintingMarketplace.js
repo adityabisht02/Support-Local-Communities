@@ -6,6 +6,7 @@ import api from "../../apis/apis";
 import { ThemeContext } from "../../ThemeContext";
 import "../../components/Navbar.css";
 
+
 function PaintingMarketplace() {
   const { theme } = useContext(ThemeContext);
   const navbarCSS = theme === "dark" ? "navbar-dark" : "";

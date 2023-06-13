@@ -44,6 +44,7 @@
 .navbar-dark {
   background-color: #1a202c;
   color: white;
+  padding: 10px;
 }
 
 .navbar-dark .dropdown-content {
@@ -99,12 +100,6 @@
   transition: transform 0.3s ease;
 }
 
-.theme-toggle-icon svg {
-  color: #ffdb4d;
-  text-shadow: 0 0 10px rgba(255, 219, 77, 0.8);
-  transition: transform 0.3s ease;
-}
-
 .dark-mode .theme-toggle-icon {
   transform: translate(-50%, -50%) rotate(180deg);
   color: #fff;
@@ -122,4 +117,12 @@
   to {
     transform: translateY(0);
   }
+}
+
+.sun-icon{
+  height: 150px;
+}
+
+.moon-icon{
+  height: 150px;
 }

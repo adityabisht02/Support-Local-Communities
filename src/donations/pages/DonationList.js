@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import api from "../../apis/apis";
 import { ThemeContext } from "../../ThemeContext";
 import '../../components/Navbar.css';
+import { Link } from "react-router-dom";
 
 const DonationList = () => {
   const { theme } = useContext(ThemeContext);
@@ -122,18 +123,18 @@ const DonationList = () => {
                   </div>
                 </div>
                 <div className="text-center mt-4">
-                  <a
-                    href="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ"
+                  <Link
+                    to="https://buy.stripe.com/test_3csaHCdRHe1e5QAdQQ"
                     className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded"
                   >
                     Donate Now
-                  </a>
-                  <a
-                    href={`/donations/${donation.$id}`}
+                  </Link>
+                  <Link
+                    to={`/donations/${donation.$id}`}
                     className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded ml-2"
                   >
                     Go to Post
-                  </a>
+                  </Link>
                 </div>
                 <br />
                 <small>Posted at: {donation.date}</small>

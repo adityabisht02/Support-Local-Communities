@@ -11,10 +11,16 @@ import Parachute from '../assets/parachute.gif';
 import MarketPlace from '../assets/marketplace.png';
 import Aeroplane from '../assets/aeroplane.png';
 import { ThemeContext } from "../ThemeContext";
+import NightTree from '../assets/nightTheme/tree.gif';
+import NightRoute from '../assets/nightTheme/route.gif';
+import NightWaves from '../assets/nightTheme/waves.gif';
+import NightParachute from '../assets/nightTheme/parachute.gif';
 
 function HeroSection() {
   const {theme} = useContext(ThemeContext);
   const heroSectionCSS = theme === 'dark' ? 'hero-section-dark' : 'hero-section';
+  const isNightTheme = theme === "dark";
+
   return (
     <>
    <div className={heroSectionCSS}>
@@ -37,10 +43,18 @@ function HeroSection() {
           </p>
         </div>
         <div className="flex flex-col items-center right">
-          <img src={Tree} alt="tree" height={600} />
+           <img
+              src={isNightTheme ? NightTree : Tree}
+              alt="tree"
+              height={600}
+            />
         </div>
         <div className="flex flex-col items-center left">
-          <img src={Route} alt="route" />
+        <img
+              src={isNightTheme ? NightRoute : Route}
+              alt="route"
+              height={600}
+            />
         </div>
         <div className="flex flex-col items-center right shadow-lg">
           <img src={Event} alt="event" />
@@ -55,10 +69,18 @@ function HeroSection() {
           <Link to="/donations" className="btn-primary">Donate Now</Link>
         </div>
         <div className="flex flex-col items-center right">
-          <img src={Waves} alt="route" />
+        <img
+              src={isNightTheme ? NightWaves : Waves}
+              alt="waves"
+              height={600}
+            />
         </div>
         <div className="flex flex-col items-center left">
-          <img src={Parachute} alt="route" />
+        <img
+              src={isNightTheme ? NightParachute : Parachute}
+              alt="parachute"
+              height={600}
+            />
         </div>
         <div className="flex flex-col items-center right shadow-lg">
           <img src={MarketPlace} alt="marketplace" />
