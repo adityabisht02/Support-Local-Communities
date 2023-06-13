@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import api from "../../apis/apis";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import '../../components/Navbar.css';
 
 function ArtworkForm() {

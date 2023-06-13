@@ -5,14 +5,29 @@ import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../assets/logo.png";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import Sun from '../assets/sun.gif';
 import Moon from '../assets/nightTheme/moon.gif';
+import { FaSun, FaMoon } from "react-icons/fa";
+import {AuthContext} from "../context/AuthContext";
+import api from "../apis/apis";
 
 function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const user = useContext(AuthContext);
   const navbarCSS = theme === "dark" ? "navbar-dark" : "";
+  const navigate = useNavigate();
+  const loginUser = () => {
+    navigate("/login");
+  }
+  const registerUser = () => {
+    navigate("/register");
+  }
+  const logoutUser = () => {
+    api.deleteSession();
+    user.isLoggedIn = false;
+    navigate("/");
+  }
 
   useEffect(() => {
     const body = document.body;
@@ -83,7 +98,7 @@ function Navbar() {
               </div>
             </button>
             {/* logout the user */}
-            <button className="px-6 py-2  bg-blue-900 hover:bg-blue-700 font-bold text-white text-xl">
+            <button className="px-6 py-2  bg-blue-900 hover:bg-blue-700 font-bold text-white text-xl border border-blue-700 rounded" onClick={logoutUser}>
               Logout
             </button>
           </div>
@@ -140,24 +155,17 @@ function Navbar() {
                 {/* <Link to="/artworkform">Submit Art</Link> */}
               </div>
             </div>
-            {theme === "light" ? (
-                  <>
-                    <img src={Sun} className="sun-icon" alt="sun"/>
-                    <span className="sr-only">Light mode</span>
-                  </>
-                ) : (
-                  <>
-                    <img src={Moon} className="moon-icon" alt="moon"/>
-                    <span className="sr-only">Dark mode</span>
-                  </>
-                )}
-             <button className="theme-toggle-btn" onClick={toggleTheme}>
+            <button className="theme-toggle-btn" onClick={toggleTheme}>
               <div className="theme-toggle-slider" />
               <div className="theme-toggle-icon">
-                
+                {theme === "light" ? (
+                  <FaSun className="sun" />
+                ) : (
+                  <FaMoon className="moon" />
+                )}
               </div>
             </button>
-            {/* logout the user */}
+            {/* login or signUp the user */}
             <button className="px-6 py-2  bg-blue-900 hover:bg-blue-700 font-bold text-white text-xl border border-blue-700 rounded" onClick={loginUser}>
               Login
             </button>
