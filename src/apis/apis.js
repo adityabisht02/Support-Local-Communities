@@ -32,6 +32,10 @@ let api = {
   createSession: async (email, password) => {
     return await account.createEmailSession(email, password);
   },
+  //delete user session
+  deleteSession: async () => {
+    return await account.deleteSessions();
+  },
   //upload image to bucket
   uploadImageToMarket: async (fileID, file) => {
     return await storage.createFile(Server.bucketID, fileID, file);

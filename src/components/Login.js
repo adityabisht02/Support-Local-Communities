@@ -1,8 +1,11 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../apis/apis";
+import { AuthContext } from "../context/AuthContext";
+
 function Login() {
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
+  const user = useContext(AuthContext);
   const [formParams, updateFormParams] = useState({
     email: "",
     password: "",
@@ -10,6 +13,8 @@ function Login() {
   const navigate = useNavigate();
   useEffect(() => {
     if (isUserLoggedIn) {
+      user.isLoggedIn = true;
+      console.log(user.isLoggedIn);
       navigate("/");
     }
   }, [isUserLoggedIn]);

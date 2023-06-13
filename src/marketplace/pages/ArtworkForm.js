@@ -2,7 +2,7 @@ import React, { useState,useContext } from "react";
 import { Client, Storage, Databases, ID } from "appwrite";
 import { Server } from "../utils/config";
 import api from "../../apis/apis";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import '../../components/Navbar.css';
 
 function ArtworkForm() {

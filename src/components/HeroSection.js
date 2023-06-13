@@ -10,7 +10,7 @@ import Waves from '../assets/waves.gif';
 import Parachute from '../assets/parachute.gif';
 import MarketPlace from '../assets/marketplace.png';
 import Aeroplane from '../assets/aeroplane.png';
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import NightTree from '../assets/nightTheme/tree.gif';
 import NightRoute from '../assets/nightTheme/route.gif';
 import NightWaves from '../assets/nightTheme/waves.gif';

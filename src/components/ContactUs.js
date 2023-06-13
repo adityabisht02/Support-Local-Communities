@@ -1,6 +1,6 @@
 import React, { useContext,useEffect } from "react";
 import { motion } from "framer-motion";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import './Navbar.css';
 
 const ContactUs = () => {

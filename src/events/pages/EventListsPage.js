@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./EventListsPage.css";
 import api, { client } from "../../apis/apis";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import '../../components/Navbar.css';
 import { Link } from "react-router-dom";
 
