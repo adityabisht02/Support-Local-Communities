@@ -1,0 +1,36 @@
+{
+    "projectId": "646848cf83cf66ebfe7c",
+    "projectName": "Support-Local-Communities-Web",
+    "functions": [
+        {
+            "$id": "64721dcc5a29db0e5246",
+            "name": "Track User Location",
+            "runtime": "node-16.0",
+            "path": "functions/Track User Location",
+            "entrypoint": "src/index.js",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15
+        },
+        {
+            "$id": "64730a26aba35685d329",
+            "name": "Stripe Payment Integration",
+            "runtime": "node-16.0",
+            "path": "functions/Stripe Payment Integration",
+            "entrypoint": "src/index.js",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15
+        }
+    ]
+}
