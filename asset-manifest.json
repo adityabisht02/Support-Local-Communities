@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/support-local/static/css/main.993543c3.css",
-    "main.js": "/support-local/static/js/main.141dc3e6.js",
-    "static/media/waves.gif": "/support-local/static/media/waves.ded9c716e3961503dd6a.gif",
-    "static/media/parachute.gif": "/support-local/static/media/parachute.730a5f403c8737314ee1.gif",
-    "static/media/sun.gif": "/support-local/static/media/sun.919ff13fe192c3282cba.gif",
-    "static/media/painting.jpg": "/support-local/static/media/painting.39d20bc69dee99bda414.jpg",
-    "static/media/route.gif": "/support-local/static/media/route.0e0bedea1eca03e0da07.gif",
-    "static/media/tree.gif": "/support-local/static/media/tree.1a240874901b418be2c1.gif",
-    "static/media/moon.gif": "/support-local/static/media/moon.abb0b19755f306bd66b1.gif",
-    "static/media/donation.png": "/support-local/static/media/donation.6e789d13ea20e9a5043b.png",
-    "static/media/marketplace.png": "/support-local/static/media/marketplace.daea0dc8ee1d4149445e.png",
-    "static/media/airport.png": "/support-local/static/media/airport.008bd56197ca93ab518e.png",
-    "static/media/event.png": "/support-local/static/media/event.bcdcd97076dfc1d00f0c.png",
-    "static/media/aeroplane.png": "/support-local/static/media/aeroplane.8e333ff605affcf0c40b.png",
-    "static/media/suruchi.png": "/support-local/static/media/suruchi.6a72b2f400dcc6431283.png",
-    "static/media/aditya.png": "/support-local/static/media/aditya.873ff40457897b8ae5d3.png",
-    "static/media/vaishnavi.png": "/support-local/static/media/vaishnavi.1e2cfe97cd3cdefb1404.png",
-    "index.html": "/support-local/index.html",
-    "main.993543c3.css.map": "/support-local/static/css/main.993543c3.css.map",
-    "main.141dc3e6.js.map": "/support-local/static/js/main.141dc3e6.js.map"
+    "main.css": "/static/css/main.993543c3.css",
+    "main.js": "/static/js/main.0e17a144.js",
+    "static/media/waves.gif": "/static/media/waves.ded9c716e3961503dd6a.gif",
+    "static/media/parachute.gif": "/static/media/parachute.730a5f403c8737314ee1.gif",
+    "static/media/sun.gif": "/static/media/sun.919ff13fe192c3282cba.gif",
+    "static/media/painting.jpg": "/static/media/painting.39d20bc69dee99bda414.jpg",
+    "static/media/route.gif": "/static/media/route.0e0bedea1eca03e0da07.gif",
+    "static/media/tree.gif": "/static/media/tree.1a240874901b418be2c1.gif",
+    "static/media/moon.gif": "/static/media/moon.abb0b19755f306bd66b1.gif",
+    "static/media/donation.png": "/static/media/donation.6e789d13ea20e9a5043b.png",
+    "static/media/marketplace.png": "/static/media/marketplace.daea0dc8ee1d4149445e.png",
+    "static/media/airport.png": "/static/media/airport.008bd56197ca93ab518e.png",
+    "static/media/event.png": "/static/media/event.bcdcd97076dfc1d00f0c.png",
+    "static/media/aeroplane.png": "/static/media/aeroplane.8e333ff605affcf0c40b.png",
+    "static/media/suruchi.png": "/static/media/suruchi.6a72b2f400dcc6431283.png",
+    "static/media/aditya.png": "/static/media/aditya.873ff40457897b8ae5d3.png",
+    "static/media/vaishnavi.png": "/static/media/vaishnavi.1e2cfe97cd3cdefb1404.png",
+    "index.html": "/index.html",
+    "main.993543c3.css.map": "/static/css/main.993543c3.css.map",
+    "main.0e17a144.js.map": "/static/js/main.0e17a144.js.map"
   },
   "entrypoints": [
     "static/css/main.993543c3.css",
-    "static/js/main.141dc3e6.js"
+    "static/js/main.0e17a144.js"
   ]
 }
