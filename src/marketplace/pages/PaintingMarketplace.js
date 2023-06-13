@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../index.css";
 import NFTCard from "./NFTCard";
 import img from "./painting.jpg";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../ThemeContext";
 import "../../components/Navbar.css";
-import api from '../../apis/apis';
+
 
 function PaintingMarketplace() {
   const { theme } = useContext(ThemeContext);

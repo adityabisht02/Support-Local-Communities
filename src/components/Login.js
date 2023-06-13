@@ -11,6 +11,7 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
+
   useEffect(() => {
     if (isUserLoggedIn) {
       user.isLoggedIn = true;
@@ -23,11 +24,13 @@ function Login() {
     e.preventDefault();
 
     try {
-      const result = await api.createSession(
-        formParams.email,
-        formParams.password
-      );
+      // const result = await api.createSession(
+      //   formParams.email,
+      //   formParams.password
+      // );
+      const result = await api.getAccount();
       if (result) {
+        localStorage.setItem("loginStatus", true);
         setUserLoggedIn(result);
       }
     } catch (e) {
