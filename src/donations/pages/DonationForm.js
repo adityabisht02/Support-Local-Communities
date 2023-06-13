@@ -9,7 +9,7 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import { IoIosCreate } from "react-icons/io";
 import Confetti from "react-confetti";
 import api from "../../apis/apis";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const DonationForm = () => {
   const { theme } = useContext(ThemeContext);

@@ -7,7 +7,7 @@ import Aditya from "../assets/aboutUs/aditya.png";
 import Vaishnavi from "../assets/aboutUs/vaishnavi.png";
 import "./AboutUs.css";
 import './Navbar.css';
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 const AboutUs = () => {
     const { theme } = useContext(ThemeContext);

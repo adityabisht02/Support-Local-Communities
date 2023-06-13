@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaPinterest } from "react-icons/fa";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { FaHeart } from "react-icons/fa";
 import './Footer.css';
 import { Link } from "react-router-dom";

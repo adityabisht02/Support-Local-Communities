@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./EventListsPage.css";
 import api from "../../apis/apis";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { Link } from "react-router-dom";
 
 const GetEvents = () => {

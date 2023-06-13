@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import api from "../../apis/apis";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import '../../components/Navbar.css';
 
 const DonationPost = () => {

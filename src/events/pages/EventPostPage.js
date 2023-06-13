@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./EventPostPage.css";
 import api from "../../apis/apis";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import '../../components/Navbar.css';
 
 const EventDetails = () => {

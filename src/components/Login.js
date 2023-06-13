@@ -1,8 +1,11 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../apis/apis";
+import { AuthContext } from "../context/AuthContext";
+
 function Login() {
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
+  const user = useContext(AuthContext);
   const [formParams, updateFormParams] = useState({
     email: "",
     password: "",
@@ -11,6 +14,8 @@ function Login() {
 
   useEffect(() => {
     if (isUserLoggedIn) {
+      user.isLoggedIn = true;
+      console.log(user.isLoggedIn);
       navigate("/");
     }
   }, [isUserLoggedIn]);
@@ -19,11 +24,11 @@ function Login() {
     e.preventDefault();
 
     try {
-      // const result = await api.createSession(
-      //   formParams.email,
-      //   formParams.password
-      // );
-      const result = await api.getAccount();
+      const result = await api.createSession(
+        formParams.email,
+        formParams.password
+      );
+      // const result = await api.getAccount();
       if (result) {
         localStorage.setItem("loginStatus", true);
         setUserLoggedIn(result);

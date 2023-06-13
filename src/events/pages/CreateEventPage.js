@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./CreateEventPage.css";
 import api from "../../apis/apis";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import '../../components/Navbar.css';
 
 const CreateEvent = () => {
