@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/Suppport-Local-Communities/static/css/main.993543c3.css",
-    "main.js": "/Suppport-Local-Communities/static/js/main.3d2f1dfb.js",
+    "main.css": "/Suppport-Local-Communities/static/css/main.36432d7b.css",
+    "main.js": "/Suppport-Local-Communities/static/js/main.dab89192.js",
     "static/media/waves.gif": "/Suppport-Local-Communities/static/media/waves.ded9c716e3961503dd6a.gif",
     "static/media/parachute.gif": "/Suppport-Local-Communities/static/media/parachute.730a5f403c8737314ee1.gif",
     "static/media/sun.gif": "/Suppport-Local-Communities/static/media/sun.919ff13fe192c3282cba.gif",
+    "static/media/eagle.gif": "/Suppport-Local-Communities/static/media/eagle.d815c289746f0bcaba07.gif",
     "static/media/painting.jpg": "/Suppport-Local-Communities/static/media/painting.39d20bc69dee99bda414.jpg",
     "static/media/route.gif": "/Suppport-Local-Communities/static/media/route.0e0bedea1eca03e0da07.gif",
     "static/media/tree.gif": "/Suppport-Local-Communities/static/media/tree.1a240874901b418be2c1.gif",
@@ -18,11 +19,11 @@
     "static/media/aditya.png": "/Suppport-Local-Communities/static/media/aditya.873ff40457897b8ae5d3.png",
     "static/media/vaishnavi.png": "/Suppport-Local-Communities/static/media/vaishnavi.1e2cfe97cd3cdefb1404.png",
     "index.html": "/Suppport-Local-Communities/index.html",
-    "main.993543c3.css.map": "/Suppport-Local-Communities/static/css/main.993543c3.css.map",
-    "main.3d2f1dfb.js.map": "/Suppport-Local-Communities/static/js/main.3d2f1dfb.js.map"
+    "main.36432d7b.css.map": "/Suppport-Local-Communities/static/css/main.36432d7b.css.map",
+    "main.dab89192.js.map": "/Suppport-Local-Communities/static/js/main.dab89192.js.map"
   },
   "entrypoints": [
-    "static/css/main.993543c3.css",
-    "static/js/main.3d2f1dfb.js"
+    "static/css/main.36432d7b.css",
+    "static/js/main.dab89192.js"
   ]
 }
