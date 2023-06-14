@@ -1,21 +1,29 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../apis/apis";
 import { ThemeContext } from "../../context/ThemeContext";
-import '../../components/Navbar.css';
+import { AuthContext } from "../../context/AuthContext";
+import "../../components/Navbar.css";
 
 function ArtworkForm() {
   const { theme } = useContext(ThemeContext);
+  const user = useContext(AuthContext);
   const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const [formParams, updateFormParams] = useState({
     name: "",
     description: "",
     price: "",
   });
-
   const [fileID, setFileID] = useState(null);
+
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (!user.isLoggedIn) {
+      navigate("/login");
+      alert("Please login first!!");
+    }
 
     //send all form params and file ID to apis to make db entry
     const dbresult = api.createArt(

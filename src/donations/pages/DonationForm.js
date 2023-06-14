@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   AiOutlineMail,
   AiOutlinePhone,
@@ -10,9 +11,11 @@ import { IoIosCreate } from "react-icons/io";
 import Confetti from "react-confetti";
 import api from "../../apis/apis";
 import { ThemeContext } from "../../context/ThemeContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const DonationForm = () => {
   const { theme } = useContext(ThemeContext);
+  const user = useContext(AuthContext);
   const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -27,8 +30,14 @@ const DonationForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!user.isLoggedIn) {
+      alert("Login First !!");
+      navigate("/login");
+    }
     setIsLoading(true);
     try {
       const data = {
@@ -75,7 +84,7 @@ const DonationForm = () => {
             <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-10">
               {isSubmitted && (
                 <div className="confetti-container mb-4">
-                  <Confetti width={1080} height={1080}/>
+                  <Confetti width={1080} height={1080} />
                   <p className="text-lg text-green-700 font-semibold">
                     Donation post created successfully!
                   </p>
@@ -84,8 +93,8 @@ const DonationForm = () => {
               {isError && (
                 <div className="mb-4">
                   <p className="text-lg text-red-700 font-semibold">
-                    Error creating the donation post. Please try again. Check all
-                    the fields
+                    Error creating the donation post. Please try again. Check
+                    all the fields
                   </p>
                 </div>
               )}
