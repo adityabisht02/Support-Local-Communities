@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CreateEventPage.css";
 import api from "../../apis/apis";
 import { ThemeContext } from "../../context/ThemeContext";
-import '../../components/Navbar.css';
+import { AuthContext } from "../../context/AuthContext";
+import "../../components/Navbar.css";
 
 const CreateEvent = () => {
   const { theme } = useContext(ThemeContext);
+  const user = useContext(AuthContext);
   const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const [Name, setName] = useState("");
   const [Description, setDescription] = useState("");
@@ -17,8 +20,14 @@ const CreateEvent = () => {
   const [EndTime, setEndTime] = useState("");
   const [Images, setImage] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!user.isLoggedIn) {
+      alert("Login First !!");
+      navigate("/login");
+    }
     try {
       const data = {
         Name,
