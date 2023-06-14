@@ -1,7 +1,14 @@
-import { React, useState } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import api from "../apis/apis";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../context/ThemeContext";
+import './Navbar.css';
+import Eagle from '../assets/eagle.gif';
+
+
 function Register() {
+  const { theme } = useContext(ThemeContext);
+  const navbarCSS = theme === "dark" ? "navbar-dark" : "";
   const [formParams, updateFormParams] = useState({
     name: "",
     email: "",
@@ -19,15 +26,27 @@ function Register() {
     console.log(result);
     navigate("/login");
   }
+  useEffect(() => {
+    const body = document.body;
+    if (theme === "dark") {
+      body.classList.add("dark-mode");
+    } else {
+      body.classList.remove("dark-mode");
+    }
+  }, [theme]);
 
   return (
-    <div className="">
+    <div className={`navbar ${navbarCSS}`}>
       <div className="flex flex-col place-items-center mt-10" id="nftForm">
         <form
-          className="bg-white shadow-md rounded px-8 pt-4 pb-8 mb-4"
+          className="bg-white shadow-md rounded px-8 pt-4 pb-8 mb-4 text-black w-[500px]"
           onSubmit={handleSubmit}
-        >
-          <h3 className="text-center font-bold mb-8">Register</h3>
+        > 
+          <h3 className="text-center font-bold mb-8 text-lg">Register</h3>
+          <div className="flex items-center justify-center mb-6">
+            <img src={Eagle} alt="Eagle" className="w-40 h-40" />
+          </div>
+          <h3 className="text-center font-bold mb-8">Hey, Welcome to Support Local Communities</h3>
           <div className="mb-4">
             <label
               className="block stroke-red-bg-btn  text-sm font-bold mb-2"
