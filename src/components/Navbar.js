@@ -8,9 +8,10 @@ import logo from "../assets/logo.png";
 import { ThemeContext } from "../context/ThemeContext";
 import Sun from "../assets/sun.gif";
 import Moon from "../assets/nightTheme/moon.gif";
-import { FaSun, FaMoon } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
 import api from "../apis/apis";
+import { FaHome, FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
+
 
 function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -45,7 +46,7 @@ function Navbar() {
           <div className="container flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
             <div className="flex items-center">
               <img src={logo} alt="Logo" className="logo-image" />
-              <div className="text-xl font-bold">Support-Local</div>
+              <div className="text-4xl font-bold">Support-Local</div>
             </div>
             <div className="hidden md:flex space-x-12 items-center">
               <Link to="/" className=" hover:text-blue-800 font-bold text-xl">
@@ -87,22 +88,31 @@ function Navbar() {
                   <Link to="/artworkform">Submit Art</Link>
                 </div>
               </div>
+              {theme === "light" ? (
+                <>
+                  <img src={Sun} className="sun-icon" alt="sun" />
+                  <span className="sr-only">Light mode</span>
+                </>
+              ) : (
+                <>
+                  <img src={Moon} className="moon-icon" alt="moon" />
+                  <span className="sr-only">Dark mode</span>
+                </>
+              )}
               <button className="theme-toggle-btn" onClick={toggleTheme}>
                 <div className="theme-toggle-slider" />
                 <div className="theme-toggle-icon">
-                  {theme === "light" ? (
-                    <FaSun className="sun" />
-                  ) : (
-                    <FaMoon className="moon" />
-                  )}
+
                 </div>
               </button>
+
               {/* logout the user */}
               <button
-                className="px-6 py-2  bg-blue-900 hover:bg-blue-700 font-bold text-white text-xl border border-blue-700 rounded"
+                className="px-6 py-2 bg-blue-900 hover:bg-blue-700 flex items-center justify-center font-bold text-white text-xl border border-blue-700 rounded"
                 onClick={logoutUser}
               >
-                Logout
+                <FaSignOutAlt className="nav-icon mr-1" size={20} />
+                <span>Logout</span>
               </button>
             </div>
           </div>
@@ -158,13 +168,31 @@ function Navbar() {
                   <Link to="/artworkform">Submit Art</Link>
                 </div>
               </div>
+              {theme === "light" ? (
+                <>
+                  <img src={Sun} className="sun-icon" alt="sun" />
+                  <span className="sr-only">Light mode</span>
+                </>
+              ) : (
+                <>
+                  <img src={Moon} className="moon-icon" alt="moon" />
+                  <span className="sr-only">Dark mode</span>
+                </>
+              )}
+              <button className="theme-toggle-btn" onClick={toggleTheme}>
+                <div className="theme-toggle-slider" />
+                <div className="theme-toggle-icon">
+
+                </div>
+              </button>
               {/* login or signUp the user */}
               <div className="dropdown">
                 <Link
                   to="/"
-                  className="hover:text-blue-800 font-bold text-xl dropbtn"
+                  className="hover:text-blue-800 font-bold text-xl dropbtn flex flex-col items-center"
                 >
-                  Login/Signup
+                  <FaUserCircle className="nav-icon mr-1" size={30} />
+                  <span>Login/Signup</span>
                 </Link>
                 <div className="dropdown-content">
                   <Link to="/login">Login</Link>
@@ -172,16 +200,6 @@ function Navbar() {
                   {/* <Link to="/artworkform">Submit Art</Link> */}
                 </div>
               </div>
-              <button className="theme-toggle-btn" onClick={toggleTheme}>
-                <div className="theme-toggle-slider" />
-                <div className="theme-toggle-icon">
-                  {theme === "light" ? (
-                    <FaSun className="sun" />
-                  ) : (
-                    <FaMoon className="moon" />
-                  )}
-                </div>
-              </button>
             </div>
           </div>
         </div>

@@ -126,3 +126,8 @@
 .moon-icon{
   height: 150px;
 }
+
+.nav-icon{
+  display: flex;
+  align-items: center;
+}
