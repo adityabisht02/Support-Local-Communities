@@ -12,6 +12,8 @@
 </p>
 <!--   <h2>Screenshots</h2> -->
 
+![Screenshot 2023-06-14 112202](https://github.com/adityabisht02/Support-Local-Communities/assets/108334168/665a0e94-0dcd-43e9-9384-ff96068b45f6)
+
 <hr/>
   <h3>🙏 Thanks for visiting!</h3>
  </div>
