@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/Suppport-Local-Communities/static/css/main.36432d7b.css",
-    "main.js": "/Suppport-Local-Communities/static/js/main.dab89192.js",
-    "static/media/waves.gif": "/Suppport-Local-Communities/static/media/waves.ded9c716e3961503dd6a.gif",
-    "static/media/parachute.gif": "/Suppport-Local-Communities/static/media/parachute.730a5f403c8737314ee1.gif",
-    "static/media/sun.gif": "/Suppport-Local-Communities/static/media/sun.919ff13fe192c3282cba.gif",
-    "static/media/eagle.gif": "/Suppport-Local-Communities/static/media/eagle.d815c289746f0bcaba07.gif",
-    "static/media/painting.jpg": "/Suppport-Local-Communities/static/media/painting.39d20bc69dee99bda414.jpg",
-    "static/media/route.gif": "/Suppport-Local-Communities/static/media/route.0e0bedea1eca03e0da07.gif",
-    "static/media/tree.gif": "/Suppport-Local-Communities/static/media/tree.1a240874901b418be2c1.gif",
-    "static/media/moon.gif": "/Suppport-Local-Communities/static/media/moon.abb0b19755f306bd66b1.gif",
-    "static/media/donation.png": "/Suppport-Local-Communities/static/media/donation.6e789d13ea20e9a5043b.png",
-    "static/media/marketplace.png": "/Suppport-Local-Communities/static/media/marketplace.daea0dc8ee1d4149445e.png",
-    "static/media/airport.png": "/Suppport-Local-Communities/static/media/airport.008bd56197ca93ab518e.png",
-    "static/media/event.png": "/Suppport-Local-Communities/static/media/event.bcdcd97076dfc1d00f0c.png",
-    "static/media/aeroplane.png": "/Suppport-Local-Communities/static/media/aeroplane.8e333ff605affcf0c40b.png",
-    "static/media/suruchi.png": "/Suppport-Local-Communities/static/media/suruchi.6a72b2f400dcc6431283.png",
-    "static/media/aditya.png": "/Suppport-Local-Communities/static/media/aditya.873ff40457897b8ae5d3.png",
-    "static/media/vaishnavi.png": "/Suppport-Local-Communities/static/media/vaishnavi.1e2cfe97cd3cdefb1404.png",
-    "index.html": "/Suppport-Local-Communities/index.html",
-    "main.36432d7b.css.map": "/Suppport-Local-Communities/static/css/main.36432d7b.css.map",
-    "main.dab89192.js.map": "/Suppport-Local-Communities/static/js/main.dab89192.js.map"
+    "main.css": "/Support-Local-Communities/static/css/main.36432d7b.css",
+    "main.js": "/Support-Local-Communities/static/js/main.ff4d096f.js",
+    "static/media/waves.gif": "/Support-Local-Communities/static/media/waves.ded9c716e3961503dd6a.gif",
+    "static/media/parachute.gif": "/Support-Local-Communities/static/media/parachute.730a5f403c8737314ee1.gif",
+    "static/media/sun.gif": "/Support-Local-Communities/static/media/sun.919ff13fe192c3282cba.gif",
+    "static/media/eagle.gif": "/Support-Local-Communities/static/media/eagle.d815c289746f0bcaba07.gif",
+    "static/media/painting.jpg": "/Support-Local-Communities/static/media/painting.39d20bc69dee99bda414.jpg",
+    "static/media/route.gif": "/Support-Local-Communities/static/media/route.0e0bedea1eca03e0da07.gif",
+    "static/media/tree.gif": "/Support-Local-Communities/static/media/tree.1a240874901b418be2c1.gif",
+    "static/media/moon.gif": "/Support-Local-Communities/static/media/moon.abb0b19755f306bd66b1.gif",
+    "static/media/donation.png": "/Support-Local-Communities/static/media/donation.6e789d13ea20e9a5043b.png",
+    "static/media/marketplace.png": "/Support-Local-Communities/static/media/marketplace.daea0dc8ee1d4149445e.png",
+    "static/media/airport.png": "/Support-Local-Communities/static/media/airport.008bd56197ca93ab518e.png",
+    "static/media/event.png": "/Support-Local-Communities/static/media/event.bcdcd97076dfc1d00f0c.png",
+    "static/media/aeroplane.png": "/Support-Local-Communities/static/media/aeroplane.8e333ff605affcf0c40b.png",
+    "static/media/suruchi.png": "/Support-Local-Communities/static/media/suruchi.6a72b2f400dcc6431283.png",
+    "static/media/aditya.png": "/Support-Local-Communities/static/media/aditya.873ff40457897b8ae5d3.png",
+    "static/media/vaishnavi.png": "/Support-Local-Communities/static/media/vaishnavi.1e2cfe97cd3cdefb1404.png",
+    "index.html": "/Support-Local-Communities/index.html",
+    "main.36432d7b.css.map": "/Support-Local-Communities/static/css/main.36432d7b.css.map",
+    "main.ff4d096f.js.map": "/Support-Local-Communities/static/js/main.ff4d096f.js.map"
   },
   "entrypoints": [
     "static/css/main.36432d7b.css",
-    "static/js/main.dab89192.js"
+    "static/js/main.ff4d096f.js"
   ]
 }
