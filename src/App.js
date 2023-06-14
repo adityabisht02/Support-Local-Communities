@@ -62,13 +62,13 @@ const App = () => {
               <Route path="/register" element={<Register />} exact />
               <Route path="/login" element={<Login />} exact />
               <Route path="/marketplace" element={<PaintingMarketplace />} exact />
-              {/* <Route path="/artworkform" element={<ArtworkForm />} exact /> */}
+              <Route path="/artworkform" element={<ArtworkForm />} exact />
               <Route path="/events" element={<EventLists />} exact />
+              <Route path="/createEvent" element={<CreateEvent />} exact />
               <Route path="/event/:id" element={<EventPost />} exact />
-              {/* <Route path="/createEvent" element={<CreateEvent />} exact /> */}
               <Route path="/getEvents" element={<GetEvents />} exact />
-              {/* <Route path="/createDonation" element={<DonationForm />} exact /> */}
               <Route path="/donations" element={<DonationList />} exact />
+              <Route path="/createDonation" element={<DonationForm />} exact />
               <Route path="/donations/:postId" element={<DonationPost />} exact />
               <Route path="/aboutUs" element={<AboutUs />} exact />
               <Route path="/termsOfService" element={<TermsOfService />} exact />
