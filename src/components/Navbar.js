@@ -116,7 +116,7 @@ function Navbar() {
           <div className="container flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
             <div className="flex items-center">
               <img src={logo} alt="Logo" className="logo-image" />
-              <div className="text-4xl font-bold">Support-Local</div>
+              <div className="text-xl font-bold">Support-Local</div>
             </div>
             <div className="hidden md:flex space-x-12 items-center">
               <Link to="/" className=" hover:text-blue-800 font-bold text-xl">
@@ -129,7 +129,7 @@ function Navbar() {
                 </Link>
                 <div className="dropdown-content">
                   <Link to="/events">Events</Link>
-                  {/* <Link to="/createEvent">Create event</Link> */}
+                  <Link to="/createEvent">Create event</Link>
                   <Link to="/getEvents">Events Near Me</Link>
                 </div>
               </div>
@@ -143,7 +143,7 @@ function Navbar() {
                 </Link>
                 <div className="dropdown-content">
                   <Link to="/donations">Donations</Link>
-                  {/* <Link to="/createDonation">Create fundraiser</Link> */}
+                  <Link to="/createDonation">Create fundraiser</Link>
                 </div>
               </div>
               <div className="dropdown">
@@ -155,7 +155,7 @@ function Navbar() {
                 </Link>
                 <div className="dropdown-content">
                   <Link to="/marketplace">Marketplace</Link>
-                  {/* <Link to="/artworkform">Submit Art</Link> */}
+                  <Link to="/artworkform">Submit Art</Link>
                 </div>
               </div>
               {/* login or signUp the user */}
