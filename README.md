@@ -8,7 +8,7 @@
     <h2>Made with ❤️ using</h2>
    <img src="https://skillicons.dev/icons?i=github,git,appwrite,react,html,css,js,vscode"/>
   </a>
-  <h3>🌐 Website: <a href="http://supportlocalwith.us/">http://supportlocalwith.us/</a></h3>
+  <h3>🌐 Website: <a href="https://support-local-communities-1--suruchikumari3.repl.co/">https://support-local-communities-1--suruchikumari3.repl.co/</a></h3>
 </p>
 <!--   <h2>Screenshots</h2> -->
 
